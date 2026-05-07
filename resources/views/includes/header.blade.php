@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <title>Neuberg Diagnostics | Lab tests Anywhere, Anytime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Maven Pro', sans-serif;
         }
 
         body {
@@ -76,25 +76,35 @@
 
         }
 
-
         .divider {
             width: 1px;
             height: 20px;
             background: #ddd;
         }
 
-
-        .icons {
+        .icon {
             display: flex;
             align-items: center;
             gap: 39px;
             margin-right: 44px;
         }
 
-        .icons img {
+        .icons-1 {
             width: 24px;
             cursor: pointer;
             border-radius: 50%;
+        }
+
+        .icons-2 {
+            width: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .icons-3 {
+            width: 24px;
+            cursor: pointer;
+
         }
 
         .icon {
@@ -107,7 +117,7 @@
         }
 
         .customer span {
-            font-family: Maven Pro;
+            font-family: 'Maven Pro', sans-serif;
             font-weight: 600;
             font-size: 14px;
             line-height: 150%;
@@ -129,7 +139,7 @@
         }
 
         .book span {
-            font-family: Maven Pro;
+            font-family: 'Maven Pro', sans-serif;
             font-weight: 600;
             font-size: 14px;
             line-height: 150%;
@@ -313,13 +323,12 @@
                     </div>
                 </div>
             </div>
-            <div class="icons">
+            <div class="icon">
 
-                <img src="{{ asset('assets/india.png') }}">
-                <img src="{{ asset('assets/user.png') }}">
-                <img src="{{ asset('assets/cart.png') }}">
+                <img src="{{ asset('assets/india.png') }} " class="icons-1">
+                <img src="{{ asset('assets/user.png') }}" class="icons-2">
+                <img src="{{ asset('assets/cart.png') }}" class="icons-3">
             </div>
-
         </div>
     </div>
     <div class="navbar">

@@ -1,6 +1,4 @@
 @section('contain')
-
-
 @include('includes.header')
 
 <style>
@@ -10,8 +8,7 @@
         background-repeat: no-repeat;
     }
 
-    /* Main layout */
-    .contact-section {
+       .contact-section {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -20,7 +17,7 @@
         gap: 60px;
     }
 
-    /* LEFT SIDE */
+
     .contact-left {
         width: 50%;
     }
@@ -60,13 +57,13 @@
         font-size: 14px;
     }
 
-    /* RIGHT SIDE */
+  
     .contact-right {
     width: 100%;
     max-width: 420px;
 }
 
-    /* FORM CARD (same as before) */
+  
     .enquiry-card {
          background: rgba(255, 239, 220, 0.3);
          box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 4px;
@@ -81,7 +78,7 @@
         color: #333;
     }
 
-    /* Inputs (apply to your existing form) */
+ 
     .enquiry-card input,
     .enquiry-card select,
     .enquiry-card textarea {
@@ -103,7 +100,7 @@
         resize: none;
     }
 
-    /* Button */
+ 
     .enquiry-card button {
         width: 100%;
         padding: 14px;
@@ -115,7 +112,7 @@
         font-weight: 600;
     }
 
-    /* Responsive */
+ 
     @media (max-width: 900px) {
         .contact-section {
             flex-direction: column;
@@ -182,8 +179,7 @@
     font-size: 22px;
 }
 
-/* ========================= */
-/* 💻 LARGE TABLETS (<=1200px) */
+
 @media (max-width: 1200px) {
 
     .contact-section {
@@ -202,8 +198,7 @@
 }
 
 
-/* ========================= */
-/* 📱 TABLET (<=992px) */
+
 @media (max-width: 992px) {
 
     .contact-section {
@@ -227,8 +222,7 @@
 }
 
 
-/* ========================= */
-/* 📱 MOBILE (<=768px) */
+
 @media (max-width: 768px) {
 
     .contact-section {
@@ -285,8 +279,7 @@
 }
 
 
-/* ========================= */
-/* 📱 SMALL MOBILE (<=480px) */
+
 @media (max-width: 480px) {
 
     .contact-left h2 {
@@ -317,7 +310,7 @@
 
 <div class="contact-section">
 
-    <!-- LEFT SIDE -->
+ 
     <div class="contact-left">
         <h2>Contact Us</h2>
 
@@ -339,7 +332,7 @@
         </div>
     </div>
 
-    <!-- RIGHT SIDE -->
+  
     <div class="contact-right">
         <div class="enquiry-card">
             <h3>Send an Enquiry</h3>
@@ -379,8 +372,7 @@
 
 <div class="map-section">
     <h3>Our Locations</h3>
-
-    <iframe 
+  <iframe 
         src="https://www.google.com/maps?q=Neuberg%20Diagnostics&output=embed"
         width="100%" 
         height="450" 

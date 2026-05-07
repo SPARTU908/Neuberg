@@ -31,7 +31,6 @@ $packages = [
 'image' => 'assets/test.png'
 ],
 
-
 [
 'title' => 'Basic Body Profile P3',
 'includes' => 'Includes 11 Tests',
@@ -42,7 +41,6 @@ $packages = [
 'discount' => '50% OFF',
 'image' => 'assets/test.png'
 ],
-
 
 [
 'title' => 'Basic Body Profile P4 ',
@@ -120,7 +118,7 @@ $packages = [
 
             <div class="price-row">
                 <div>
-                    <span class="old-price">Rs. {{ $package['old_price'] }}</span>
+                    <!-- <span class="old-price">Rs. {{ $package['old_price'] }}</span> -->
                     <div class="new-price">Rs. {{ $package['new_price'] }}</div>
                 </div>
 
