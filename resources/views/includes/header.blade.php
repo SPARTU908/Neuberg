@@ -155,13 +155,13 @@
             color: #4b2a7b;
         }
 
-        .navbar {
+        /* .navbar {
             background: #5a2d91;
-            padding: 15px 40px;
+            padding: 15px 160px;
             border-radius: 12px;
             margin: 10px 123px;
             display: flex;
-            gap: 131px;
+            gap: 130px;
             color: #fff;
             width: 1080px;
         }
@@ -170,6 +170,36 @@
             color: #fff;
             text-decoration: none;
             font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+        } */
+
+        .navbar {
+            background: #5a2d91;
+            padding: 13px 129px;
+            border-radius: 15px 15px 0px 0px;
+            margin: 10px 123px;
+            display: flex;
+            gap: 115px;
+            color: #fff;
+            width: 1080px;
+        }
+
+        .navbar a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+        }
+
+        .navbar a img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
         }
 
         .hero {
@@ -240,6 +270,13 @@
 
             .top-info {
                 display: none;
+            }
+
+            .icon {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                margin-right: 44px;
             }
 
             .icons {
@@ -331,13 +368,33 @@
             </div>
         </div>
     </div>
+
+
     <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/ecg">ECG Page</a>
-        <a href="/doctors-profile">Doctor's Profile</a>
-        <a href="/appointment">Book An Appoinment</a>
-        <a href="/contact">Contact Us</a>
+
+        <a href="/">
+            <img src="{{ asset('assets/menu-home.png') }}" alt="">
+            Home
+        </a>
+
+        <a href="/doctors-profile">
+            <img src="{{ asset('assets/menu-dr.png') }}" alt="">
+            Doctor's Profile
+        </a>
+
+        <a href="/appointment">
+            <img src="{{ asset('assets/menu-book.png') }}" alt="">
+            Book An Appointment
+        </a>
+
+        <a href="/contact">
+            <img src="{{ asset('assets/menu-call.png') }}" alt="">
+            Contact Us
+        </a>
+
     </div>
+
+
     <div class="hero">
         <div class="hero-left">
             <img src="doctor.png" alt="Banner Image">

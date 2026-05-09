@@ -154,7 +154,7 @@ $packages = [
 
 <style>
     .package-section {
-        max-width: 1146px;
+       max-width: 1007px;
         margin: 80px auto;
         padding: 0 10px;
     }
@@ -168,7 +168,7 @@ $packages = [
 
     .package-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 
@@ -183,6 +183,8 @@ $packages = [
         border: 1.2px solid #cfa8e9;
         background: #fef7f3;
         box-shadow: 0 4.8px 4.8px #00000040;
+        width: 305px;
+        height: 286px;
 
     }
 
@@ -236,9 +238,9 @@ $packages = [
     .desc {
         font-size: 12px;
         color: #666;
-        margin-bottom: 14px;
+        margin-bottom: 2px;
         line-height: 1.4;
-        margin-top: 25px;
+        margin-top: 2px;
     }
 
 
@@ -246,7 +248,7 @@ $packages = [
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 45px;
+        margin-top: 25px;
     }
 
 

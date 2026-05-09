@@ -42,7 +42,7 @@
         </div>
         <div class="footer-links">
             <div class="col">
-                <h4>Neuberg Diagnostics</h4>
+                <div class="heading">Neuberg Diagnostics</div>
                 <a href="#">About Us</a>
                 <a href="#">Team</a>
                 <a href="#">Accreditations</a>
@@ -95,7 +95,7 @@
         margin: 0px 33px;
         display: flex;
         justify-content: space-between;
-        gap: 40px;
+        gap: 26px;
         flex-wrap: wrap;
     }
 
@@ -165,14 +165,15 @@
         gap: 20px;
     }
 
-    .col h4 {
-        font-size: 15px;
+    .col .heading {
+        font-size: 14px;
         margin-bottom: 10px;
+        font-weight: bolder;
     }
 
     .col a {
         display: block;
-        font-size: 13px;
+        font-size: 14px;
         color: #ddd;
         text-decoration: none;
         margin-bottom: 6px;
@@ -261,6 +262,13 @@
 
 
     @media (max-width: 480px) {
+
+
+        .footer {
+            background: #4a4a4f;
+            color: #fff;
+            padding: 50px 0px 20px;
+        }
 
         .footer-links {
             grid-template-columns: 1fr;
