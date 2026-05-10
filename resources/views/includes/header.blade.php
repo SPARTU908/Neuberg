@@ -29,7 +29,7 @@
         }
 
         .top-bar {
-            max-width: 1152px;
+            max-width: 1050px;
             margin: auto;
             display: flex;
             align-items: center;
@@ -155,34 +155,18 @@
             color: #4b2a7b;
         }
 
-        /* .navbar {
-            background: #5a2d91;
-            padding: 15px 160px;
-            border-radius: 12px;
-            margin: 10px 123px;
-            display: flex;
-            gap: 130px;
-            color: #fff;
-            width: 1080px;
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 21px;
-        } */
+       
 
         .navbar {
-            background: #5a2d91;
-            padding: 13px 129px;
-            border-radius: 15px 15px 0px 0px;
-            margin: 10px 123px;
-            display: flex;
-            gap: 115px;
-            color: #fff;
-            width: 1080px;
+        background: #5a2d91;
+    padding: 21px 129px;
+    border-radius: 15px 15px 0px 0px;
+    margin: 10px 123px;
+    display: flex;
+    gap: 83px;
+    color: #fff;
+    width: 998px;
+
         }
 
         .navbar a {
@@ -210,7 +194,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 1080px;
+            width: 1000px;
         }
 
         .hero-left img {

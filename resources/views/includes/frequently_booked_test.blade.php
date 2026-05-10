@@ -250,7 +250,7 @@ $tests = [
 
 <style>
     .test-section {
-        max-width: 1088px;
+        max-width: 969px;
         margin: 80px auto;
         padding: 0 20px;
         overflow: hidden;

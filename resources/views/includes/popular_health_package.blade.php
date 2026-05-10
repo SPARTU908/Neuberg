@@ -154,7 +154,7 @@ $packages = [
 
 <style>
     .package-section {
-       max-width: 1007px;
+       max-width: 969px;
         margin: 80px auto;
         padding: 0 10px;
     }

@@ -10,11 +10,11 @@
 
     body {
         font-family: 'Maven Pro', sans-serif;
-
+        background: #f3f3f3;
     }
 
     .doctor-section {
-        max-width: 1050px;
+        max-width: 1300px;
         margin: 70px auto;
         padding: 0 20px;
     }
@@ -22,8 +22,8 @@
     .section-title {
         text-align: center;
         font-size: 42px;
-        margin-bottom: 60px;
-        color: #222;
+        margin-bottom: 70px;
+        color: #5a2d91;
         font-weight: 700;
     }
 
@@ -35,12 +35,13 @@
 
     .doctor-card {
         position: relative;
-        background: #5a2d91;
-        border-radius: 35px 0px 35px 0px;
-        padding: 87px 4px 35px;
+        background: #efefef;
+        border-radius: 25px;
+        overflow: hidden;
         text-align: center;
+        padding: 30px 25px 120px;
         transition: 0.4s ease;
-        height: 440px;
+        min-height: 760px;
     }
 
     .doctor-card:hover {
@@ -48,57 +49,94 @@
         box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
     }
 
-    .doctor-image {
-        position: absolute;
-        top: -25px;
-        left: 50%;
-        transform: translateX(-50%);
+    .logo {
+        width: 220px;
+        margin-bottom: 25px;
+    }
+
+    .experience {
+        color: #f59b14;
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .exp-text {
+        color: #5a2d91;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 35px;
+    }
+
+    .doctor-image-wrapper {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .circle-bg {
+        width: 260px;
+        height: 260px;
+        background: #5a2d91;
+        border-radius: 50%;
+        border: 4px solid #f59b14;
+        margin: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
     }
 
     .doctor-image img {
-        width: 175px;
-        height: 206px;
+        width: 100%;
+        max-width: 230px;
         object-fit: cover;
-        border-radius: 28px;
-        display: block;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .doctor-info {
+        width: 100%;
+        background: #5a2d91;
+        border: 3px solid #f59b14;
+        border-radius: 18px;
+        padding: 16px 15px;
+        margin-top: -25px;
+        position: relative;
+        z-index: 5;
     }
 
     .doctor-name {
-        font-size: 18px;
+        font-size: 30px;
         color: #fff;
         font-weight: 700;
-        margin-bottom: 10px;
-        margin-top: 104px;
+        margin-bottom: 5px;
     }
 
     .doctor-role {
-        font-size: 18px;
-        color: #e9eeee;
-        margin-bottom: 18px;
+        font-size: 20px;
+        color: #f59b14;
+        font-weight: 600;
+    }
+
+    .doctor-heading {
+        color: #5a2d91;
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 20px;
     }
 
     .doctor-desc {
-        color: #f7f7f7;
-        line-height: 1.7;
-        font-size: 13px;
+        color: #5a2d91;
+        line-height: 1.8;
+        font-size: 17px;
+        font-weight: 500;
     }
 
-    .doctor-btn {
-        display: inline-block;
-        margin-top: 22px;
-        padding: 12px 24px;
-        background: #fff;
-        color: #567672;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.3s;
-    }
-
-    .doctor-btn:hover {
-        background: #1f1f1f;
-        color: #fff;
+    .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
     }
 
     @media(max-width:992px) {
@@ -110,26 +148,45 @@
 
     @media(max-width:768px) {
 
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 40px;
-        }
-
         .doctor-grid {
             grid-template-columns: 1fr;
-            gap: 60px;
+        }
+
+        .section-title {
+            font-size: 32px;
         }
 
         .doctor-card {
-            padding: 85px 20px 30px;
+            min-height: auto;
         }
 
-        .doctor-name {
+        .experience {
+            font-size: 32px;
+        }
+
+        .exp-text {
             font-size: 22px;
         }
 
+        .doctor-name {
+            font-size: 24px;
+        }
+
         .doctor-role {
-            font-size: 16px;
+            font-size: 17px;
+        }
+
+        .doctor-heading {
+            font-size: 20px;
+        }
+
+        .doctor-desc {
+            font-size: 15px;
+        }
+
+        .circle-bg {
+            width: 220px;
+            height: 220px;
         }
     }
 </style>
@@ -138,93 +195,34 @@
 
 $doctors = [
 
-    // [
-    //     "name" => "Dr. Manoj Kumar Shah",
-    //     "role" => "Advisor",
-    //     "image" => asset('assets/doctor-profile/p1.jpg'),
-
-    // ],
-
     [
         "name" => "Dr. Himani Rastogi",
-        "role" => "25+ Years of Experience in Diagnostic Pathology ",
+        "role" => "MD (Pathology), KGMU, Lucknow",
+        "experience" => "25+ YEARS",
+        "exp_text" => "OF EXPERIENCE IN DIAGNOSTIC PATHOLOGY",
         "image" => asset('assets/doctor-profile/p2.jpg'),
-        "desc" => "A highly experienced pathologist specializing in histopathology, cytology, hematology and routine reporting.
-          Expert in laboratory management, quality assurance and clinical diagnostics.
-          Committed to delivering accurate reports and reliable patient care."
 
+        "desc" => "A highly experienced pathologist specializing in histopathology, cytology, hematology and routine reporting. Expert in laboratory management, quality assurance and clinical diagnostics. Committed to delivering accurate reports and reliable patient care."
     ],
-
-    // [
-    //     "name" => "Shri Ras Bihari Lal",
-    //     "role" => "Director,Sales & Marketing ",
-    //     "image" => asset('assets/doctor-profile/p3.png'),
-
-    // ],
-
-    // [
-    //     "name" => "Shri Aditya Vikram Shah",
-    //     "role" => "CEO & Director ",
-    //      "image" => asset('assets/doctor-profile/p4.jpg'),
-
-    // ],
-
-    // [
-    //     "name" => "DR. ANSHUMAN BANERJEE ",
-    //     "role" => "Management Team",
-    //     "image" => asset('assets/doctor-profile/p5.png'),
-
-    // ],
-
-    // [
-    //     "name" => "CA SANDEEP ANAND SINGH ",
-    //     "role" => "Management Team",
-    //      "image" => asset('assets/doctor-profile/p6.png'),
-
-    // ],
-
-    // [
-    //     "name" => "ADV AYUSH MITAL",
-    //     "role" => "Management Team",
-    //      "image" => asset('assets/doctor-profile/p7.jpg'),
-
-    // ],
-
-    // [
-    //     "name" => "SHRI AMIT TRIPATHI ",
-    //     "role" => "Management Team",
-    //      "image" => asset('assets/doctor-profile/p8.jpg'),
-
-    // ],
-
-    // [
-    //     "name" => "SHRI KAUSTUBH BHATT ",
-    //    "role" => "Management Team",
-    //      "image" => asset('assets/doctor-profile/p9.jpg'),
-
-    // ],
-
-    // [
-    //     "name" => "SHRI VIKAS CHOURASIA",
-    //     "role" => "Management Team",
-    //      "image" => asset('assets/doctor-profile/p10.png'),
-
-    // ],
 
     [
         "name" => "Dr. Tanima Mandal",
-        "role" => " M.D. (Pathologist)",
+        "role" => "M.D. (Pathologist)",
+        "experience" => "6+ YEARS",
+        "exp_text" => "OF EXPERIENCE IN HEMATOLOGY & BIOCHEMISTRY",
         "image" => asset('assets/doctor-profile/p11.png'),
-        "desc" => "   6+ Years in Haematology, Biochemistry, Immunology, Clinical Pathology"
 
+        "desc" => "6+ Years in Haematology, Biochemistry, Immunology and Clinical Pathology."
     ],
 
     [
         "name" => "Dr. Piyush Hari",
-        "role" => "M.D. (Microbiologist)  ",
+        "role" => "M.D. (Microbiologist)",
+        "experience" => "8+ YEARS",
+        "exp_text" => "OF EXPERIENCE IN MICROBIOLOGY",
         "image" => asset('assets/doctor-profile/p12.jpg'),
-        "desc" => "8 Years of experience in Microbiology"
 
+        "desc" => "8 Years of experience in Microbiology."
     ],
 
 ];
@@ -241,22 +239,58 @@ $doctors = [
 
             <div class="doctor-card">
 
-                <div class="doctor-image">
-                    <img src="<?php echo $doctor['image']; ?>" alt="">
-                </div>
+                <!-- Logo -->
+               
 
-                <h3 class="doctor-name">
-                    <?php echo $doctor['name']; ?>
+                <!-- Experience -->
+                <h2 class="experience">
+                    <?php echo $doctor['experience']; ?>
+                </h2>
+
+                <h3 class="exp-text">
+                    <?php echo $doctor['exp_text']; ?>
                 </h3>
 
-                <p class="doctor-role">
-                    <?php echo $doctor['role']; ?>
-                </p>
+                <!-- Doctor Image -->
+                <div class="doctor-image-wrapper">
+
+                    <div class="circle-bg">
+
+                        <div class="doctor-image">
+                            <img src="<?php echo $doctor['image']; ?>" alt="">
+                        </div>
+
+                    </div>
+
+                    <div class="doctor-info">
+
+                        <h3 class="doctor-name">
+                            <?php echo $doctor['name']; ?>
+                        </h3>
+
+                        <p class="doctor-role">
+                            <?php echo $doctor['role']; ?>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Description -->
+                <h4 class="doctor-heading">
+                    To Neuberg Diagnostics Private Limited
+                </h4>
 
                 <p class="doctor-desc">
                     <?php echo $doctor['desc']; ?>
                 </p>
 
+                <!-- Bottom Wave -->
+                <svg class="wave" viewBox="0 0 1440 320">
+                    <path fill="#5a2d91" fill-opacity="1"
+                        d="M0,224L60,234.7C120,245,240,267,360,272C480,277,600,267,720,245.3C840,224,960,192,1080,192C1200,192,1320,224,1380,240L1440,256L1440,320L0,320Z">
+                    </path>
+                </svg>
 
             </div>
 
@@ -265,12 +299,5 @@ $doctors = [
     </div>
 
 </section>
-
-
-
-
-
-
-
 
 @include('includes.footer')
