@@ -215,7 +215,7 @@ $tests = [
 
                 <div class="test-card">
 
-                    <div class="plus-icon">+</div>
+                   <a href="{{ url('/appointment') }}" class="plus-icon">+</a>
 
                     <h3>{{ $test['name'] }}</h3>
 
@@ -386,114 +386,7 @@ $tests = [
     }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
-
-        .test-section {
-            padding: 0 15px;
-        }
-
-        .section-title {
-            font-size: 20px;
-        }
-
-        .test-card {
-            min-height: 145px;
-            padding: 18px;
-        }
-
-        .test-card h3 {
-            font-size: 15px;
-        }
-
-        .price {
-            font-size: 16px;
-        }
-
-        .corner-icon {
-            width: 36px;
-        }
-    }
-
-    /* MOBILE VIEW EXACT LIKE IMAGE */
-    @media (max-width: 576px) {
-
-        .test-section {
-            padding: 0 14px;
-            margin: 40px auto;
-        }
-
-        .section-title {
-            font-size: 16px;
-            line-height: 1.3;
-            width: 150px;
-            margin-bottom: 18px;
-        }
-
-        .testSwiper {
-            overflow: visible;
-            padding-bottom: 30px;
-        }
-
-        .swiper-slide {
-            width: 120px !important;
-        }
-
-        .test-card {
-            min-height: 115px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .test-card h3 {
-            font-size: 10px;
-            line-height: 1.4;
-            margin-bottom: 6px;
-            padding-right: 10px;
-        }
-
-        .includes {
-            font-size: 9px;
-            margin-bottom: 4px;
-        }
-
-        .report {
-            font-size: 9px;
-            margin-top: 2px;
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .price {
-            font-size: 11px;
-        }
-
-        .footer-price {
-            margin-top: 10px;
-        }
-
-        .corner-icon {
-            width: 22px;
-            right: 8px;
-            bottom: 8px;
-        }
-
-        .plus-icon {
-            width: 20px;
-            height: 20px;
-            top: -8px;
-            right: -6px;
-            font-size: 18px;
-        }
-
-        .swiper-pagination-bullet {
-            width: 6px;
-            height: 6px;
-        }
-
-        .swiper-pagination-bullet-active {
-            width: 16px;
-        }
-    }
+   
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

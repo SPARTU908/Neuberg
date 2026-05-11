@@ -35,19 +35,16 @@
 
     .doctor-card {
         position: relative;
-        background: #efefef;
+      
         border-radius: 25px;
         overflow: hidden;
         text-align: center;
         padding: 30px 25px 120px;
-        transition: 0.4s ease;
+     
         min-height: 760px;
     }
 
-    .doctor-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
-    }
+   
 
     .logo {
         width: 220px;
@@ -77,9 +74,9 @@
     .circle-bg {
         width: 260px;
         height: 260px;
-        background: #5a2d91;
+        /* background: #5a2d91; */
         border-radius: 50%;
-        border: 4px solid #f59b14;
+        /* border: 4px solid #f59b14; */
         margin: auto;
         overflow: hidden;
         display: flex;
@@ -105,14 +102,14 @@
     }
 
     .doctor-name {
-        font-size: 30px;
+        font-size: 21px;
         color: #fff;
         font-weight: 700;
         margin-bottom: 5px;
     }
 
     .doctor-role {
-        font-size: 20px;
+        font-size: 16px;
         color: #f59b14;
         font-weight: 600;
     }
@@ -197,32 +194,29 @@ $doctors = [
 
     [
         "name" => "Dr. Himani Rastogi",
-        "role" => "MD (Pathology), KGMU, Lucknow",
+        "role" => " 25+ Years in MD (Pathology), KGMU, Lucknow",
         "experience" => "25+ YEARS",
         "exp_text" => "OF EXPERIENCE IN DIAGNOSTIC PATHOLOGY",
-        "image" => asset('assets/doctor-profile/p2.jpg'),
-
-        "desc" => "A highly experienced pathologist specializing in histopathology, cytology, hematology and routine reporting. Expert in laboratory management, quality assurance and clinical diagnostics. Committed to delivering accurate reports and reliable patient care."
+        "image" => asset('assets/doctor-profile/p2-new.png'),
+        "desc" => " 25+ Years in MD (Pathology)"
     ],
 
     [
         "name" => "Dr. Tanima Mandal",
-        "role" => "M.D. (Pathologist)",
+        "role" => " 6+ Years in M.D. (Pathologist)",
         "experience" => "6+ YEARS",
         "exp_text" => "OF EXPERIENCE IN HEMATOLOGY & BIOCHEMISTRY",
-        "image" => asset('assets/doctor-profile/p11.png'),
-
-        "desc" => "6+ Years in Haematology, Biochemistry, Immunology and Clinical Pathology."
+        "image" => asset('assets/doctor-profile/p11-new.png'),
+       "desc" => "6+ Years in Haematology, Biochemistry, Immunology and Clinical Pathology."
     ],
 
     [
         "name" => "Dr. Piyush Hari",
-        "role" => "M.D. (Microbiologist)",
+        "role" => "8+ Years in M.D. (Microbiologist)",
         "experience" => "8+ YEARS",
         "exp_text" => "OF EXPERIENCE IN MICROBIOLOGY",
-        "image" => asset('assets/doctor-profile/p12.jpg'),
-
-        "desc" => "8 Years of experience in Microbiology."
+        "image" => asset('assets/doctor-profile/p12-new.png'),
+         "desc" => "8 Years of experience in Microbiology."
     ],
 
 ];
@@ -231,7 +225,7 @@ $doctors = [
 
 <section class="doctor-section">
 
-    <h2 class="section-title">Meet Our Team</h2>
+    <h2 class="section-title">Our Team Of Experts</h2>
 
     <div class="doctor-grid">
 
@@ -240,16 +234,15 @@ $doctors = [
             <div class="doctor-card">
 
                 <!-- Logo -->
-               
-
+        
                 <!-- Experience -->
-                <h2 class="experience">
+                <!-- <h2 class="experience">
                     <?php echo $doctor['experience']; ?>
                 </h2>
 
                 <h3 class="exp-text">
                     <?php echo $doctor['exp_text']; ?>
-                </h3>
+                </h3> -->
 
                 <!-- Doctor Image -->
                 <div class="doctor-image-wrapper">
@@ -277,20 +270,12 @@ $doctors = [
                 </div>
 
                 <!-- Description -->
-                <h4 class="doctor-heading">
-                    To Neuberg Diagnostics Private Limited
-                </h4>
+               
 
-                <p class="doctor-desc">
-                    <?php echo $doctor['desc']; ?>
-                </p>
+              
 
-                <!-- Bottom Wave -->
-                <svg class="wave" viewBox="0 0 1440 320">
-                    <path fill="#5a2d91" fill-opacity="1"
-                        d="M0,224L60,234.7C120,245,240,267,360,272C480,277,600,267,720,245.3C840,224,960,192,1080,192C1200,192,1320,224,1380,240L1440,256L1440,320L0,320Z">
-                    </path>
-                </svg>
+               
+              
 
             </div>
 

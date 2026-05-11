@@ -80,12 +80,12 @@
             </div>
 
             <!-- TEST LIST -->
-            <div class="test-list">
+            <!-- <div class="test-list">
 
                 <div class="test-item">
                     <div>
-                        <h3>Basic Body Profile P14</h3>
-                        <p>Starting from Rs. 5200</p>
+                        <h3>Prostate Specific Antigen</h3>
+                       
                     </div>
 
                     <button class="add-btn">
@@ -95,9 +95,7 @@
 
                 <div class="test-item">
                     <div>
-                        <h3>FERTILITY PROFILE - MALE</h3>
-                        <p>Starting from Rs. 2420</p>
-                        <small>Report in 5 hours</small>
+                        <h3>SEMEN TEST</h3>
                     </div>
 
                     <button class="add-btn">
@@ -107,9 +105,7 @@
 
                 <div class="test-item">
                     <div>
-                        <h3>Free Prostate Specific Antigen</h3>
-                        <p>Starting from Rs. 1070</p>
-                        <small>Report in 4 hours</small>
+                        <h3>TESTOSTERONE</h3>
                     </div>
 
                     <button class="add-btn">
@@ -117,19 +113,11 @@
                     </button>
                 </div>
 
-                <div class="test-item">
-                    <div>
-                        <h3>LUMOS (MALE)</h3>
-                        <p>Starting from Rs. 49500</p>
-                        <small>Report in 25 days</small>
-                    </div>
 
-                    <button class="add-btn">
-                        Add <span>+</span>
-                    </button>
-                </div>
+            </div> -->
 
-            </div>
+            <!-- TEST LIST -->
+           <div class="test-list" id="testList"></div>
 
         </div>
 
@@ -215,7 +203,7 @@
 
     .book-btn {
         position: absolute;
-        bottom: 87px;
+        bottom: 44px;
         left: 596px;
         background: #ff7a00;
         color: #fff;
@@ -336,7 +324,7 @@
             /* width: 80%; */
             /* text-align: center; */
             border-radius: 8px;
-            margin: -1px 2px 21px -5px;
+            margin: -1px 2px -8px -5px;
             padding: 2px 5px 2px 5px;
             font-size: 11px;
         }
@@ -365,16 +353,16 @@
     border:2px solid #7f49b7;
 }
 
-.close-modal{
-    position:absolute;
-    top:18px;
-    right:25px;
-    border:none;
-    background:none;
-    font-size:48px;
-    color:#f28b00;
-    cursor:pointer;
-    z-index:10;
+.close-modal {
+    position: absolute;
+    top: 5px;
+    right: 48px;
+    border: none;
+    background: none;
+    font-size: 54px;
+    color: #f28b00;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .modal-top{
@@ -416,12 +404,12 @@
 
 .top-card h3{
     color:#5f2d91;
-    font-size:34px;
+    font-size:15px;
     font-weight:700;
 }
 
-.modal-content{
-    padding:50px 80px;
+.modal-content {
+    padding: 8px 51px;
 }
 
 .modal-header{
@@ -432,9 +420,14 @@
 }
 
 .modal-header h2{
-    font-size:38px;
-    color:#333;
-    font-weight:700;
+       padding: 0 78px 13px 0;
+    color: #4c4b4b;
+    font-family: "Maven Pro";
+    font-size: 20.176px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 100%;
 }
 
 .tabs{
@@ -444,7 +437,7 @@
 
 .tab-btn{
     border:none;
-    padding:14px 40px;
+   padding: 3px 31px;
     border-radius:10px;
     background:#fff;
     border:1px solid #ccc;
@@ -480,9 +473,13 @@
 }
 
 .test-item h3{
-    color:#5f2d91;
-    font-size:34px;
-    margin-bottom:8px;
+    margin: 0;
+    color: #5c2d91;
+    font-family: Maven Pro;
+    font-size: 20.176px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .test-item p{
@@ -496,31 +493,32 @@
     color:#444;
 }
 
-.add-btn{
-    border:1px solid #7c3db6;
-    background:#fff;
-    color:#7c3db6;
-    height:50px;
-    width:130px;
-    border-radius:6px;
-    font-size:24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 0 0 30px;
-    cursor:pointer;
+.add-btn {
+    border: 1px solid #7c3db6;
+    background: #fff;
+    color: #7c3db6;
+    height: 34px;
+    width: 120px;
+    border-radius: 6px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 13px;
+    cursor: pointer;
 }
 
-.add-btn span{
-    width:45px;
-    height:48px;
-    background:#6f2dad;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:34px;
-    border-radius:0 5px 5px 0;
+.add-btn span a {
+    width: 45px;
+    height: 34px;
+    background: #6f2dad;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    border-radius: 0 7px 4px 0;
+    text-decoration: none !important;
 }
 
 /* MOBILE */
@@ -604,7 +602,7 @@
 
 
 
-<script>
+<!-- <script>
 
     const modal = document.getElementById('testModal');
     const closeModal = document.getElementById('closeModal');
@@ -637,5 +635,150 @@
             modal.style.display = 'none';
         }
     });
+
+</script> -->
+
+
+
+<script>
+
+const modal = document.getElementById('testModal');
+const closeModal = document.getElementById('closeModal');
+
+const cards = document.querySelectorAll('.custom-card');
+
+const modalTitle = document.getElementById('modalTitle');
+const modalHeading = document.getElementById('modalHeading');
+const testList = document.getElementById('testList');
+
+
+const testData = {
+
+    "MEN": [
+        "Prostate Specific Antigen",
+        "SEMEN TEST",
+        "TESTOSTERONE",
+       
+    ],
+
+    "WOMAN": [
+       "DUAL MARKER",
+       "Quadraple marker",
+       "NIPT",
+       "PAP SMEAR",
+    ],
+
+    "PREVENTIVE HEALTH": [
+       
+    ],
+
+    "SENIOR CITIZENS": [
+       
+    ],
+
+    "ALLTESTS": [
+       "Complete Blood Count (CBC)",
+       "ESR (Erythrocyte Sedimentation Rate)",
+       "Fasting Blood Sugar (FBS)",
+       "Post Prandial Blood Sugar (PPBS)",
+       "Random Blood Sugar (RBS)",
+       "HbA1c (Glycated Hemoglobin)",
+       "Total Cholesterol",
+       "SGPT (ALT)",
+       "SGOT (AST)",
+       "Liver Function Test (LFT Panel)",
+       "Renal Function Test",
+       "Serum Creatinine",
+       "Blood Urea",
+       "Uric Acid",
+       "Thyroid Function test(TFT)",
+       "TSH",
+       "T3",
+       "T4",
+       "Sodium (Na⁺)",
+       "Potassium (K⁺)",
+       "Calcium",
+       "Vitamin D (25-OH)",
+       "Vitamin B12",
+       "Iron Studies",
+       "C-Reactive Protein (CRP)",
+       "Widal Test (Typhoid)",
+       "Malaria Parasite (MP)",
+       "HIV I & II",
+       "HBsAg (Hepatitis B)",
+       "HCV MANUAL",
+       "Urine Routine & Microscopy",
+       "Urine Culture & Sensitivity",
+       "Stool Routine Examination",
+       "Stool Occult Blood",
+       "PSA",
+       "HSCRP",
+       "BLOOD GROUP",
+       "CEA",
+       "CA125",
+       "CA 19.9",
+       "PTINR",
+       "Rf factor",
+       "FSH",
+       "LH",
+       "PROLACTIN",
+       "ANTI MULERIN HORMONE",
+       "Dengue NS1 / IgM / IgG",
+       "Amylase",
+       "Lipase",
+    ]
+
+};
+
+
+cards.forEach(card => {
+
+    card.addEventListener('click', () => {
+
+        let title = card.querySelector('p').innerText.trim();
+
+        modalTitle.innerText = title;
+        modalHeading.innerText = "Tests related to " + title;
+
+        let tests = testData[title] || [];
+
+        let html = '';
+
+        tests.forEach(test => {
+
+            html += `
+                <div class="test-item">
+
+                    <div>
+                        <h3>${test}</h3>
+                    </div>
+
+                    <button class="add-btn">
+                        Book <span> <a href="{{ url('/appointment') }}">+</a></span>
+                    </button>
+
+                </div>
+            `;
+
+        });
+
+        testList.innerHTML = html;
+
+        modal.style.display = 'flex';
+
+    });
+
+});
+
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if(e.target == modal){
+        modal.style.display = 'none';
+    }
+});
 
 </script>

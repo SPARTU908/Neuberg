@@ -29,7 +29,7 @@
         }
 
         .top-bar {
-            max-width: 1050px;
+            max-width: 1140px;
             margin: auto;
             display: flex;
             align-items: center;
@@ -155,18 +155,16 @@
             color: #4b2a7b;
         }
 
-       
 
         .navbar {
-        background: #5a2d91;
-    padding: 21px 129px;
-    border-radius: 15px 15px 0px 0px;
-    margin: 10px 123px;
-    display: flex;
-    gap: 83px;
-    color: #fff;
-    width: 998px;
-
+            background: #5a2d91;
+            padding: 19px 135px;
+            border-radius: 15px 15px 0px 0px;
+            margin: 1px 132px;
+            display: flex;
+            gap: 83px;
+            color: #fff;
+            width: 1085px;
         }
 
         .navbar a {
@@ -187,15 +185,18 @@
         }
 
         .hero {
-            margin: 0 123px;
-            background: linear-gradient(135deg, #cbb4e3, #e5d8f3);
-            border-radius: 12px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 1000px;
+            flex-direction: column;
+            width: auto;
+            text-align: center;
+            background-image: url('{{ $heroImage ?? asset("assets/ecg-2.jpeg") }}');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 314px;
+
         }
+
+
 
         .hero-left img {
             width: 150px;
@@ -246,39 +247,64 @@
 
         @media (max-width: 768px) {
 
+            body {
+                overflow-x: hidden;
+            }
+
             .top-bar {
-                flex-direction: row;
+                display: flex;
+                align-items: center;
                 justify-content: space-between;
-                padding: 10px 15px;
+                padding: 12px 15px;
+                position: relative;
             }
 
             .top-info {
                 display: none;
             }
 
+            .logo-wrap {
+                width: auto;
+                height: auto;
+            }
+
+            .logo {
+                width: 140px;
+                height: auto;
+            }
+
             .icon {
                 display: flex;
                 align-items: center;
-                gap: 18px;
-                margin-right: 44px;
+                gap: 14px;
+                margin-right: 0;
             }
 
-            .icons {
-                gap: 15px;
-                margin-right: 0;
+            .icons-1,
+            .icons-2,
+            .icons-3 {
+                width: 22px;
+                height: 22px;
             }
 
             .hamburger {
                 display: block;
+                font-size: 28px;
+                cursor: pointer;
+                color: #5a2d91;
             }
+
+            /* MOBILE MENU */
 
             .navbar {
                 position: absolute;
-                top: 90px;
+                top: 78px;
                 left: 0;
                 width: 100%;
+                background: #5a2d91;
                 flex-direction: column;
-                gap: 15px;
+                align-items: flex-start;
+                gap: 18px;
                 padding: 20px;
                 margin: 0;
                 border-radius: 0;
@@ -290,28 +316,72 @@
                 display: flex;
             }
 
+            .navbar a {
+                width: 100%;
+                font-size: 15px;
+            }
+
+            /* HERO SECTION */
+
             .hero {
-                flex-direction: column;
-                margin: 10px;
-                width: auto;
-                padding: 20px;
-                text-align: center;
+                width: 100%;
+                height: 180px;
+                margin: 0;
+                padding: 0;
+                background-size: cover;
+                background-position: center;
             }
 
             .hero-left img {
-                width: 120px;
-                margin-bottom: 20px;
+                width: 100%;
+                max-width: 140px;
+                height: auto;
             }
+
+            /* SEARCH */
 
             .search-box {
                 width: 100%;
+                flex-direction: row;
+            }
+
+            .search-box input {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .location {
+                padding: 12px 10px;
+                font-size: 13px;
+                white-space: nowrap;
             }
 
             .upload-btn {
+                width: 100%;
                 margin-left: 0;
                 margin-top: 10px;
+                text-align: center;
             }
         }
+
+
+        .appointment-hero {
+            flex-direction: column;
+            width: auto;
+            text-align: center;
+            background-image: url('{{ $heroImage ?? asset("assets/ecg-2.jpeg") }}');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 279px;
+        }
+
+        /* .appointment-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+           
+        } */
     </style>
 </head>
 
@@ -330,7 +400,7 @@
                     </div>
                     <div class="customer">
                         <span>Customer Care</span>
-                        <strong>9700 36 9700</strong>
+                        <strong>9055449055</strong>
                     </div>
                 </div>
                 <div class="divider"></div>
@@ -340,7 +410,7 @@
                     </div>
                     <div class="book">
                         <span>Book a Home Visit</span>
-                        <strong>8939 06 6655</strong>
+                        <strong>9055449055</strong>
                     </div>
                 </div>
             </div>
@@ -362,7 +432,7 @@
         </a>
 
         <a href="/doctors-profile">
-            <img src="{{ asset('assets/menu-dr.png') }}" alt="">
+            <img src="{{ asset('assets/menu-dr-3.png') }}" alt="">
             Doctor's Profile
         </a>
 
@@ -379,9 +449,9 @@
     </div>
 
 
-    <div class="hero">
+    <div class="hero {{ $heroClass ?? '' }}">
         <div class="hero-left">
-            <img src="doctor.png" alt="Banner Image">
+
         </div>
     </div>
 </body>

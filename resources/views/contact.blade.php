@@ -180,9 +180,10 @@
     }
 
     .map-section h3 {
-        margin-bottom: 15px;
-        font-size: 22px;
-    }
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+}
 
     .connection-wrapper {
         display: flex;
