@@ -333,137 +333,289 @@ $packages = [
     }
 
     /* MOBILE */
-    @media (max-width: 768px) {
+  /* ======================================
+   RESPONSIVE FIX
+   DESKTOP DESIGN SAME RAHEGA
+====================================== */
 
-        .package-section {
-            margin: 40px auto;
-            padding: 0 14px;
-        }
+/* TABLET */
 
-        .section-title {
-            font-size: 18px;
-            margin-bottom: 18px;
-        }
+@media (max-width: 1024px) {
 
-        .package-card {
-            padding: 14px;
-            min-height: 250px;
-        }
-
-        .package-card h3 {
-            font-size: 14px;
-        }
-
-        .includes {
-            font-size: 10px;
-        }
-
-        .desc {
-            font-size: 10px;
-            -webkit-line-clamp: 4;
-        }
-
-        .new-price {
-            font-size: 15px;
-        }
-
-        .cart-btn {
-            padding: 6px 10px;
-            font-size: 11px;
-        }
-
-        .corner-icon1 {
-            width: 28px;
-            top: 35px;
-        }
-
-        .book-now-img {
-            width: 100%;
-            margin: 10px 0;
-        }
+    .package-section {
+        max-width: 100%;
+        padding: 0 16px;
+        margin: 60px auto;
     }
 
-    /* SMALL MOBILE */
-    @media (max-width: 576px) {
-
-        .swiper-slide {
-            width: auto !important;
-        }
-
-        .package-card {
-            min-height: 235px;
-            border-radius: 10px;
-        }
-
-        .package-card h3 {
-            font-size: 12px;
-        }
-
-        .desc {
-            font-size: 9px;
-        }
-
-        .new-price {
-            font-size: 13px;
-        }
-
-        .cart-btn {
-            width: 100%;
-            margin-top: 8px;
-        }
-
-        .price-row {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .discount {
-            width: 70px;
-            height: 20px;
-        }
-
-        .discount span {
-            font-size: 10px;
-        }
+    .packageSwiper {
+        padding-bottom: 45px;
     }
+
+    .package-card {
+        height: 300px;
+        padding: 18px;
+    }
+
+    .package-card h3 {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .includes {
+        font-size: 13px;
+    }
+
+    .desc {
+        font-size: 13px;
+        -webkit-line-clamp: 4;
+    }
+
+    .new-price {
+        font-size: 24px;
+    }
+
+    .cart-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .book-now-img {
+        width: calc(100% - 30px);
+        margin: 12px 15px;
+        border-radius: 12px;
+    }
+}
+
+
+/* ======================================
+   MOBILE EXACT LOOK
+====================================== */
+
+@media (max-width: 768px) {
+
+    .package-section {
+        width: 100%;
+        padding: 0 14px;
+        margin: 45px auto;
+        overflow: hidden;
+    }
+
+    .section-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .packageSwiper {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 42px;
+    }
+
+    .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    .package-card {
+        width: 100%;
+        min-height: 270px;
+        height: auto;
+
+        padding: 14px;
+        border-radius: 14px;
+
+        background: #fffdfc;
+        border: 1px solid #d7b6ef;
+
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+
+        position: relative;
+    }
+
+    /* DISCOUNT */
+
+    .discount {
+        top: 0;
+        left: 0;
+
+        width: 78px;
+        height: 24px;
+
+        border-radius: 0 0 8px 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .discount span {
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    /* TITLE */
+
+    .package-card h3 {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.3;
+
+        color: #5a2d91;
+
+        margin-top: 30px;
+        margin-bottom: 10px;
+
+        padding-right: 38px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* TEXT */
+
+    .includes {
+        font-size: 13px;
+        font-weight: 600;
+        color: #666;
+
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .desc {
+        font-size: 12px;
+        line-height: 1.4;
+        color: #666;
+
+        -webkit-line-clamp: 3;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* PRICE */
+
+    .price-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        margin-top: 14px;
+    }
+
+    .new-price {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    /* BUTTON */
+
+    .cart-btn {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px 14px;
+
+        border-radius: 10px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        text-decoration: none !important;
+    }
+
+    /* ICON */
+
+    .corner-icon1 {
+        width: 26px;
+
+        position: absolute;
+        top: 40px;
+        right: 14px;
+    }
+
+    /* BANNER */
+
+    .book-now-img {
+        width: calc(100% - 28px);
+        margin: 12px 14px;
+        border-radius: 12px;
+        display: block;
+    }
+
+    /* PAGINATION */
+
+    .swiper-pagination {
+        bottom: -2px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #c9c9c9;
+        opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #b26be3;
+        width: 8px;
+        border-radius: 50%;
+    }
+}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-    new Swiper(".packageSwiper", {
+   new Swiper(".packageSwiper", {
 
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        spaceBetween: 28,
-        loop: false,
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: 28,
+    loop: false,
 
-        /* REMOVE GRID */
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    breakpoints: {
+
+        0: {
+            slidesPerView: 1.15,
+            slidesPerGroup: 1,
+            spaceBetween: 14
         },
 
-        breakpoints: {
+        576: {
+            slidesPerView: 1.4,
+            slidesPerGroup: 1,
+            spaceBetween: 16
+        },
 
-            0: {
-                slidesPerView: 1.2,
-                slidesPerGroup: 1,
-                spaceBetween: 12
-            },
+        768: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 18
+        },
 
-            576: {
-                slidesPerView: 2,
-                slidesPerGroup: 2,
-                spaceBetween: 16
-            },
-
-            992: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-                spaceBetween: 28
-            }
+        992: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 28
         }
-    });
+    }
+});
 </script>

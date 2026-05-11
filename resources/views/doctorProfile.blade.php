@@ -2,15 +2,11 @@
 @include('includes.header')
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+   
 
     body {
         font-family: 'Maven Pro', sans-serif;
-        background: #f3f3f3;
+    
     }
 
     .doctor-section {
@@ -46,10 +42,7 @@
 
    
 
-    .logo {
-        width: 220px;
-        margin-bottom: 25px;
-    }
+  
 
     .experience {
         color: #f59b14;

@@ -245,127 +245,7 @@
             color: #5a2d91;
         }
 
-        @media (max-width: 768px) {
-
-            body {
-                overflow-x: hidden;
-            }
-
-            .top-bar {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 12px 15px;
-                position: relative;
-            }
-
-            .top-info {
-                display: none;
-            }
-
-            .logo-wrap {
-                width: auto;
-                height: auto;
-            }
-
-            .logo {
-                width: 140px;
-                height: auto;
-            }
-
-            .icon {
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                margin-right: 0;
-            }
-
-            .icons-1,
-            .icons-2,
-            .icons-3 {
-                width: 22px;
-                height: 22px;
-            }
-
-            .hamburger {
-                display: block;
-                font-size: 28px;
-                cursor: pointer;
-                color: #5a2d91;
-            }
-
-            /* MOBILE MENU */
-
-            .navbar {
-                position: absolute;
-                top: 78px;
-                left: 0;
-                width: 100%;
-                background: #5a2d91;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 18px;
-                padding: 20px;
-                margin: 0;
-                border-radius: 0;
-                display: none;
-                z-index: 999;
-            }
-
-            .navbar.active {
-                display: flex;
-            }
-
-            .navbar a {
-                width: 100%;
-                font-size: 15px;
-            }
-
-            /* HERO SECTION */
-
-            .hero {
-                width: 100%;
-                height: 180px;
-                margin: 0;
-                padding: 0;
-                background-size: cover;
-                background-position: center;
-            }
-
-            .hero-left img {
-                width: 100%;
-                max-width: 140px;
-                height: auto;
-            }
-
-            /* SEARCH */
-
-            .search-box {
-                width: 100%;
-                flex-direction: row;
-            }
-
-            .search-box input {
-                width: 100%;
-                font-size: 14px;
-            }
-
-            .location {
-                padding: 12px 10px;
-                font-size: 13px;
-                white-space: nowrap;
-            }
-
-            .upload-btn {
-                width: 100%;
-                margin-left: 0;
-                margin-top: 10px;
-                text-align: center;
-            }
-        }
-
-
-        .appointment-hero {
+         .appointment-hero {
             flex-direction: column;
             width: auto;
             text-align: center;
@@ -376,12 +256,166 @@
             height: 279px;
         }
 
-        /* .appointment-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-           
-        } */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 15px;
+        position: relative;
+    }
+
+    .top-info {
+        display: none;
+    }
+
+    .logo-wrap {
+        width: auto;
+        height: auto;
+    }
+
+    .logo {
+        width: 140px;
+        height: auto;
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-right: 0;
+    }
+
+    .icons-1,
+    .icons-2,
+    .icons-3 {
+        width: 22px;
+        height: 22px;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        color: #5a2d91;
+        order: -1;
+        margin-right: 10px;
+    }
+
+    /* =========================
+       RESPONSIVE NAVBAR
+    ========================== */
+
+    .navbar {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: #5a2d91;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 20px;
+        margin: 0;
+        border-radius: 0;
+        display: none;
+        z-index: 999;
+
+        /* IMPORTANT */
+        height: auto;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar a {
+        width: 100%;
+        font-size: 15px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+
+    .navbar a img {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================== */
+.hero{
+      flex-direction: column;
+    width: auto;
+    text-align: center;
+   
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 92px;
+
+}
+    
+.appointment-hero {
+        flex-direction: column;
+    width: auto;
+    text-align: center;
+    background-image: url(http://127.0.0.1:8000/assets/appoinment-banner.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 84px;
+    }
+
+    .hero-left img {
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .search-box input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .location {
+        padding: 12px 10px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .upload-btn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+  
+}
+
+
+
+
+
+    
     </style>
 </head>
 
