@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ECGController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,8 @@ Route::get('/appointment', [AppointmentController::class, 'index']);
 Route::post('/appointment-book', [AppointmentController::class, 'store'])->name('appointment.store');
 Route::get('/doctors-profile', [DoctorController::class, 'index']);
 Route::get('/ecg', [ECGController::class, 'index']);
+Route::get('/search', [SearchController::class, 'index']);
+
 
 
 

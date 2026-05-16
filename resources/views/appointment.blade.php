@@ -1,12 +1,17 @@
 @section('contain')
 
+@php
+    $heroImage = asset('assets/appoinment-banner.png');
+     $heroClass = 'appointment-hero';
+@endphp
+
 @include('includes.header')
 
 
  <style>
 
  body {
-    background-image: url(/assets/bg.png);
+    /*background-image: url(/assets/bg.png);*/
             background-size: cover;
             background-repeat: no-repeat;
 }
@@ -95,12 +100,60 @@
     } 
 }
 
+.toast-success{
+    background: #22c55e;
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    animation: fadeIn 0.4s ease;
+}
+
+.error{
+    color: red;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-5px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
  </style>
 
 
 
+
+
 <div class="enquiry-card">
+    
     <h2>Book Appointment</h2>
+
+    {{-- SUCCESS TOAST --}}
+   {{-- SUCCESS TOAST --}}
+@if(session('success'))
+    <div class="toast-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('whatsapp_url'))
+<script>
+    setTimeout(() => {
+        window.location.href = "{{ session('whatsapp_url') }}";
+    }, 1500);
+</script>
+@endif
 
     <form method="POST" action="{{ route('appointment.store') }}">
         @csrf
@@ -114,7 +167,7 @@
         <input type="text" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
         @error('phone') <div class="error">{{ $message }}</div> @enderror
 
-        <button type="submit">Get a Callback</button>
+        <button type="submit">Get a Call Back</button>
     </form>
 </div>
 

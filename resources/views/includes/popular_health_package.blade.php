@@ -93,46 +93,63 @@ $packages = [
 ];
 @endphp
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-
-<div class="package-section">
+<div class="package-section" id="popular-health-package">
 
     <h2 class="section-title">Popular Health Packages</h2>
 
-    <div class="package-grid">
+    <!-- SWIPER -->
+    <div class="swiper packageSwiper">
 
-        @foreach($packages as $package)
-        <div class="package-card">
+        <div class="swiper-wrapper">
 
-            <div class="discount">
-                <span>{{ $package['discount'] }}</span>
-            </div>
+            @foreach($packages as $package)
 
-            <h3>{{ $package['title'] }}</h3>
+            <div class="swiper-slide">
 
-            <p class="includes">{{ $package['includes'] }}</p>
+                <div class="package-card">
 
-            <p class="desc">
-                {{ $package['description'] }}
-            </p>
+                    <div class="discount">
+                        <span>{{ $package['discount'] }}</span>
+                    </div>
 
-            <div class="price-row">
-                <div>
-                    <!-- <span class="old-price">Rs. {{ $package['old_price'] }}</span> -->
-                    <div class="new-price">Rs. {{ $package['new_price'] }}</div>
+                    <h3>{{ $package['title'] }}</h3>
+
+                    <p class="includes">{{ $package['includes'] }}</p>
+
+                    <p class="desc">
+                        {{ $package['description'] }}
+                    </p>
+
+                    <div class="price-row">
+
+                        <div>
+                            <div class="new-price">
+                                Rs. {{ $package['new_price'] }}
+                            </div>
+                        </div>
+
+                   <a href="{{ url('/appointment') }}" class="cart-btn">
+    Book Now
+</a>
+
+                    </div>
+
+                    <img src="{{ asset($package['image']) }}" class="corner-icon1">
+
                 </div>
 
-                <button class="cart-btn">Add to Cart</button>
             </div>
 
-            <img src="{{ asset($package['image']) }}" class="corner-icon1">
+            @endforeach
 
         </div>
-        @endforeach
+
+        <!-- PAGINATION -->
+        <div class="swiper-pagination"></div>
 
     </div>
-
-</div>
 
 </div>
 
@@ -140,23 +157,24 @@ $packages = [
 <div>
     <a href="{{ url('/appointment') }}">
         <picture>
-            <!-- Mobile Image -->
+
             <source srcset="{{ asset('assets/book-now-mobile.png') }}" media="(max-width: 768px)">
 
-            <!-- Default/Desktop Image -->
             <img src="{{ asset('assets/book-now-1.png') }}" class="book-now-img">
-        </picture>
 
+        </picture>
     </a>
+</div>
 
 </div>
 
 
 <style>
     .package-section {
-       max-width: 969px;
+        max-width: 969px;
         margin: 80px auto;
         padding: 0 10px;
+        overflow: hidden;
     }
 
     .section-title {
@@ -165,27 +183,33 @@ $packages = [
         margin-bottom: 25px;
     }
 
-
-    .package-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+    /* SWIPER */
+    .packageSwiper {
+        width: 100%;
+        padding-bottom: 40px;
     }
 
+    .swiper-wrapper {
+        align-items: stretch;
+    }
 
+    .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    /* CARD */
     .package-card {
         padding: 18px;
         position: relative;
         transition: 0.3s;
         width: 100%;
-        height: auto;
+        height: 286px;
         border-radius: 8px;
         border: 1.2px solid #cfa8e9;
         background: #fef7f3;
         box-shadow: 0 4.8px 4.8px #00000040;
-        width: 305px;
-        height: 286px;
-
+        margin-bottom: 20px;
     }
 
     .package-card:hover {
@@ -193,14 +217,12 @@ $packages = [
         box-shadow: 0 6px 16px rgba(90, 45, 145, 0.15);
     }
 
-
     .discount {
         position: absolute;
         top: 0px;
         left: -1px;
         background: #f7931e;
         color: #fff;
-        font-size: 12px;
         padding: 4px 10px;
         border-radius: 7.976px;
         font-weight: 600;
@@ -212,11 +234,8 @@ $packages = [
         color: #fff;
         font-family: Maven Pro;
         font-size: 13.957px;
-        font-style: normal;
         font-weight: 700;
-        line-height: normal;
     }
-
 
     .package-card h3 {
         font-size: 17px;
@@ -224,8 +243,8 @@ $packages = [
         font-weight: 550;
         margin-bottom: 6px;
         margin-top: 25px;
+        padding-right: 40px;
     }
-
 
     .includes {
         font-size: 12px;
@@ -234,37 +253,31 @@ $packages = [
         margin-top: 25px;
     }
 
-
     .desc {
         font-size: 12px;
         color: #666;
         margin-bottom: 2px;
         line-height: 1.4;
         margin-top: 2px;
-    }
 
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
     .price-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 25px;
+        margin-top: 18px;
     }
-
-
-    .old-price {
-        font-size: 12px;
-        color: #999;
-        text-decoration: line-through;
-    }
-
 
     .new-price {
         font-size: 18px;
         font-weight: 700;
         color: #333;
     }
-
 
     .cart-btn {
         background: linear-gradient(90deg, #5a2d91, #9b63d1);
@@ -274,14 +287,13 @@ $packages = [
         border-radius: 8px;
         font-size: 13px;
         cursor: pointer;
-        margin-top: 11px;
+         text-decoration: none !important;
     }
 
     .cart-btn:hover {
         opacity: 0.9;
     }
 
-    /* Corner icon */
     .corner-icon1 {
         position: absolute;
         top: 41px;
@@ -289,148 +301,322 @@ $packages = [
         width: 40px;
     }
 
-    .book-now-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        /* center by default */
-        margin: 20px 10px;
-    }
-
-
-
-    /* Hover effect */
-    .book-now:hover {
-        transform: scale(1.03);
-    }
-
-    /* ========================= */
-    /* 📱 TABLET */
-    @media (max-width: 992px) {
-        .book-now {
-            max-width: 400px;
-        }
-    }
-
-    /* 📱 MOBILE */
-    @media (max-width: 768px) {
-        .book-now {
-            max-width: 300px;
-        }
-    }
-
-    /* 📱 SMALL MOBILE */
-    @media (max-width: 480px) {
-        .book-now {
-            max-width: 90%;
-        }
-    }
-
-    .book-now-wrapper {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 999;
-    }
-
-    .book-now {
+    .book-now-img {
         width: 971px;
         margin: 8px 185px;
     }
 
-    /* ========================= */
-    /* 💻 LARGE TABLETS (<= 1200px) */
-    @media (max-width: 1200px) {
-        .package-section {
-            max-width: 95%;
-        }
-
-        .package-card {
-            width: 100%;
-        }
+    /* PAGINATION */
+    .swiper-pagination {
+        bottom: 0 !important;
     }
 
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #d4c2ea;
+        opacity: 1;
+    }
 
-    /* ========================= */
-    /* 📱 TABLETS (<= 992px) */
+    .swiper-pagination-bullet-active {
+        background: #b26be3;
+        width: 20px;
+        border-radius: 20px;
+    }
+
+    /* TABLET */
     @media (max-width: 992px) {
 
-        .package-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
         .package-card {
-            width: 100%;
             height: auto;
-        }
-
-        .price-row {
-            margin-top: 25px;
+            min-height: 290px;
         }
     }
 
+    /* MOBILE */
+  /* ======================================
+   RESPONSIVE FIX
+   DESKTOP DESIGN SAME RAHEGA
+====================================== */
 
-    /* ========================= */
-    /* 📱 MOBILE (<= 768px) */
-    @media (max-width: 768px) {
+/* TABLET */
 
-        .package-grid {
-            grid-template-columns: 1fr;
-        }
+@media (max-width: 1024px) {
 
-        .package-section {
-            margin: 40px 10px;
-        }
-
-        .package-card {
-            padding: 15px;
-        }
-
-        .package-card h3 {
-            font-size: 15px;
-        }
-
-        .desc {
-            font-size: 11px;
-        }
-
-        .new-price {
-            font-size: 16px;
-        }
-
-        .cart-btn {
-            padding: 6px 10px;
-            font-size: 12px;
-        }
-
-        .corner-icon1 {
-            width: 30px;
-        }
+    .package-section {
+        max-width: 100%;
+        padding: 0 16px;
+        margin: 60px auto;
     }
 
-
-    /* ========================= */
-    /* 📱 SMALL MOBILE (<= 480px) */
-    @media (max-width: 480px) {
-
-        .package-card {
-            border-radius: 10px;
-        }
-
-        .price-row {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .cart-btn {
-            width: 100%;
-            text-align: center;
-        }
-
-        .discount {
-            font-size: 10px;
-            padding: 3px 8px;
-        }
+    .packageSwiper {
+        padding-bottom: 45px;
     }
+
+    .package-card {
+        height: 300px;
+        padding: 18px;
+    }
+
+    .package-card h3 {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .includes {
+        font-size: 13px;
+    }
+
+    .desc {
+        font-size: 13px;
+        -webkit-line-clamp: 4;
+    }
+
+    .new-price {
+        font-size: 24px;
+    }
+
+    .cart-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .book-now-img {
+        width: calc(100% - 30px);
+        margin: 12px 15px;
+        border-radius: 12px;
+    }
+}
+
+
+/* ======================================
+   MOBILE EXACT LOOK
+====================================== */
+
+@media (max-width: 768px) {
+
+    .package-section {
+        width: 100%;
+        padding: 0 14px;
+        margin: 45px auto;
+        overflow: hidden;
+    }
+
+    .section-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .packageSwiper {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 42px;
+    }
+
+    .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    .package-card {
+        width: 100%;
+        min-height: 270px;
+        height: auto;
+
+        padding: 14px;
+        border-radius: 14px;
+
+        background: #fffdfc;
+        border: 1px solid #d7b6ef;
+
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+
+        position: relative;
+    }
+
+    /* DISCOUNT */
+
+    .discount {
+        top: 0;
+        left: 0;
+
+        width: 78px;
+        height: 24px;
+
+        border-radius: 0 0 8px 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .discount span {
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    /* TITLE */
+
+    .package-card h3 {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.3;
+
+        color: #5a2d91;
+
+        margin-top: 30px;
+        margin-bottom: 10px;
+
+        padding-right: 38px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* TEXT */
+
+    .includes {
+        font-size: 13px;
+        font-weight: 600;
+        color: #666;
+
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .desc {
+        font-size: 12px;
+        line-height: 1.4;
+        color: #666;
+
+        -webkit-line-clamp: 3;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* PRICE */
+
+    .price-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        margin-top: 14px;
+    }
+
+    .new-price {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    /* BUTTON */
+
+    .cart-btn {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px 14px;
+
+        border-radius: 10px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        text-decoration: none !important;
+    }
+
+    /* ICON */
+
+    .corner-icon1 {
+        width: 26px;
+
+        position: absolute;
+        top: 40px;
+        right: 14px;
+    }
+
+    /* BANNER */
+
+    .book-now-img {
+        width: calc(100% - 28px);
+        margin: 12px 14px;
+        border-radius: 12px;
+        display: block;
+    }
+
+    /* PAGINATION */
+
+    .swiper-pagination {
+        bottom: -2px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #c9c9c9;
+        opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #b26be3;
+        width: 8px;
+        border-radius: 50%;
+    }
+}
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+   new Swiper(".packageSwiper", {
+
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: 28,
+    loop: false,
+
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    breakpoints: {
+
+        0: {
+            slidesPerView: 1.15,
+            slidesPerGroup: 1,
+            spaceBetween: 14
+        },
+
+        576: {
+            slidesPerView: 1.4,
+            slidesPerGroup: 1,
+            spaceBetween: 16
+        },
+
+        768: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 18
+        },
+
+        992: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 28
+        }
+    }
+});
+</script>

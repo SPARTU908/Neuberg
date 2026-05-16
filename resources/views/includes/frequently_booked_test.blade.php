@@ -198,7 +198,7 @@ $tests = [
 
 <div class="test-section">
 
-    <h2 class="section-title">Frequently Booked Tests</h2>
+    <h2 class="section-title" id="frequently-booked-tests">Frequently Booked Tests</h2>
 
     <!-- Swiper -->
 
@@ -215,7 +215,7 @@ $tests = [
 
                 <div class="test-card">
 
-                    <div class="plus-icon">+</div>
+                   <a href="{{ url('/appointment') }}" class="plus-icon">+</a>
 
                     <h3>{{ $test['name'] }}</h3>
 
@@ -370,6 +370,7 @@ $tests = [
     /* PAGINATION */
     .swiper-pagination {
         bottom: 0 !important;
+        position: static !important;
     }
 
     .swiper-pagination-bullet {
@@ -385,115 +386,191 @@ $tests = [
         border-radius: 20px;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
+    /* ==============================
+   RESPONSIVE FIX
+   DESKTOP DESIGN SAME RAHEGA
+================================= */
 
-        .test-section {
-            padding: 0 15px;
-        }
+@media (max-width: 1024px) {
 
-        .section-title {
-            font-size: 20px;
-        }
-
-        .test-card {
-            min-height: 145px;
-            padding: 18px;
-        }
-
-        .test-card h3 {
-            font-size: 15px;
-        }
-
-        .price {
-            font-size: 16px;
-        }
-
-        .corner-icon {
-            width: 36px;
-        }
+    .test-section {
+        max-width: 100%;
+        padding: 0 16px;
+        margin: 60px auto;
     }
 
-    /* MOBILE VIEW EXACT LIKE IMAGE */
-    @media (max-width: 576px) {
-
-        .test-section {
-            padding: 0 14px;
-            margin: 40px auto;
-        }
-
-        .section-title {
-            font-size: 16px;
-            line-height: 1.3;
-            width: 150px;
-            margin-bottom: 18px;
-        }
-
-        .testSwiper {
-            overflow: visible;
-            padding-bottom: 30px;
-        }
-
-        .swiper-slide {
-            width: 120px !important;
-        }
-
-        .test-card {
-            min-height: 115px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .test-card h3 {
-            font-size: 10px;
-            line-height: 1.4;
-            margin-bottom: 6px;
-            padding-right: 10px;
-        }
-
-        .includes {
-            font-size: 9px;
-            margin-bottom: 4px;
-        }
-
-        .report {
-            font-size: 9px;
-            margin-top: 2px;
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .price {
-            font-size: 11px;
-        }
-
-        .footer-price {
-            margin-top: 10px;
-        }
-
-        .corner-icon {
-            width: 22px;
-            right: 8px;
-            bottom: 8px;
-        }
-
-        .plus-icon {
-            width: 20px;
-            height: 20px;
-            top: -8px;
-            right: -6px;
-            font-size: 18px;
-        }
-
-        .swiper-pagination-bullet {
-            width: 6px;
-            height: 6px;
-        }
-
-        .swiper-pagination-bullet-active {
-            width: 16px;
-        }
+    .section-title {
+        font-size: 42px;
+        line-height: 1.2;
+        margin-bottom: 24px;
     }
+
+    .test-card {
+        min-height: 185px;
+        padding: 18px;
+    }
+
+    .test-card h3 {
+        font-size: 20px;
+        line-height: 1.4;
+        padding-right: 28px;
+    }
+
+    .includes,
+    .report {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .corner-icon {
+        width: 55px;
+    }
+
+    .plus-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 34px;
+    }
+}
+
+
+/* ==============================
+   MOBILE VIEW
+   ONLY 1 CARD IN A ROW
+================================= */
+@media (max-width: 768px) {
+
+    .test-section {
+        width: 100%;
+        padding: 0 14px;
+        margin: 40px auto;
+        overflow: hidden;
+    }
+
+    .section-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 18px;
+        color: #333;
+    }
+
+    .testSwiper {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 35px;
+    }
+
+    .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+
+    .test-card {
+        width: 100%;
+        min-height: 118px;
+        padding: 12px 12px 14px;
+        border-radius: 12px;
+        position: relative;
+
+        background: #fffdfc;
+        border: 1px solid #d7b6ef;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+        margin-bottom: 10px;
+    }
+
+    .test-card h3 {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #6c35b3;
+
+        padding-right: 26px;
+        margin-bottom: 6px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .includes {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #b06be0;
+
+        margin-bottom: 10px;
+    }
+
+    .report {
+        display: none;
+    }
+
+    .footer-price {
+        margin-top: 0;
+    }
+
+    .price {
+        font-size: 14px;
+        font-weight: 700;
+        color: #4a4a4a;
+    }
+
+    .corner-icon {
+        width: 24px;
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .plus-icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+
+        position: absolute;
+        top: -10px;
+        right: -6px;
+
+        background: #6c35b3;
+        color: #fff;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1;
+
+        text-decoration: none;
+    }
+
+    /* PAGINATION */
+
+    .swiper-pagination {
+        bottom: -8px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #c9c9c9;
+        opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #b26be3;
+        width: 8px;
+        border-radius: 50%;
+    }
+}
+   
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -537,54 +614,49 @@ $tests = [
 
 
 <script>
-    new Swiper(".testSwiper", {
+   new Swiper(".testSwiper", {
 
-        slidesPerView: 3,
-        slidesPerGroup: 6,
-        spaceBetween: 28,
-        loop: false,
+    slidesPerView: 2.2,
+    slidesPerGroup: 2,
+    spaceBetween: 12,
+    loop: false,
 
-        grid: {
-            rows: 2,
-            fill: 'row'
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    breakpoints: {
+
+        0: {
+            slidesPerView: 2.2,
+            slidesPerGroup: 2,
+            spaceBetween: 12,
+            grid: {
+                rows: 1
+            }
         },
 
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+        576: {
+            slidesPerView: 2.2,
+            slidesPerGroup: 2,
+            spaceBetween: 14,
+            grid: {
+                rows: 1
+            }
         },
 
-        breakpoints: {
+        992: {
+            slidesPerView: 3,
+            slidesPerGroup: 6,
+            spaceBetween: 28,
 
-            0: {
-                slidesPerView: 2,
-                slidesPerGroup: 4,
-                spaceBetween: 12,
-                grid: {
-                    rows: 2,
-                    fill: 'row'
-                }
-            },
-
-            576: {
-                slidesPerView: 2,
-                slidesPerGroup: 4,
-                spaceBetween: 16,
-                grid: {
-                    rows: 2,
-                    fill: 'row'
-                }
-            },
-
-            992: {
-                slidesPerView: 3,
-                slidesPerGroup: 6,
-                spaceBetween: 28,
-                grid: {
-                    rows: 2,
-                    fill: 'row'
-                }
+            grid: {
+                rows: 2,
+                fill: 'row'
             }
         }
-    });
+    }
+});
+
 </script>

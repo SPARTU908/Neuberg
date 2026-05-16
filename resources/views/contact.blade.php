@@ -179,10 +179,11 @@
         padding: 0 10px;
     }
 
-    .map-section h3 {
-        margin-bottom: 15px;
-        font-size: 22px;
-    }
+   .map-section h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+}
 
     .connection-wrapper {
         display: flex;
@@ -344,10 +345,10 @@
             <p>Home Visit - <strong>+91 9055449055</strong></p>
         </div>
 
-        <div class="contact-item">
+        <!-- <div class="contact-item">
             <img src="{{ asset('assets/contact.png') }}" alt="">
             <p>Customer Care - <strong>+91 9055449055</strong></p>
-        </div>
+        </div> -->
     </div>
 
 

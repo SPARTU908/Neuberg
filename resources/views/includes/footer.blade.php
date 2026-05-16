@@ -7,9 +7,7 @@
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
 
-                <a href="#" target="_blank">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
+              
 
                 <a href="#" target="_blank">
                     <i class="fa-brands fa-linkedin-in"></i>
@@ -19,60 +17,56 @@
                     <i class="fa-brands fa-instagram"></i>
                 </a>
 
-                <a href="#" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
+              
             </div>
             <div class="footer-box purple">
                 <img src="{{ asset('assets/footer-home.png') }}">
                 <div>
                     <p>Book a Home Visit</p>
-                    <strong>8939 06 6655</strong>
+                    <strong>9055449055</strong>
                 </div>
             </div>
 
-            <div class="footer-box orange">
+            <!-- <div class="footer-box orange">
                 <img src="{{ asset('assets/footer-call.png') }}">
                 <div>
                     <p>Customer Care</p>
-                    <strong>9700 36 9700</strong>
+                    <strong>9055449055</strong>
                 </div>
-            </div>
+            </div> -->
 
         </div>
         <div class="footer-links">
             <div class="col">
-                <div class="heading">Neuberg Diagnostics</div>
-                <a href="#">About Us</a>
-                <a href="#">Team</a>
-                <a href="#">Accreditations</a>
-                <a href="#">Careers</a>
-                <a href="#">Contact Us</a>
+                <div class="heading">
+                    <h4>Home</h4>
+                </div>
+               <a href="#frequently-booked-tests">Frequently Booked Test</a>
+                <a href="#popular-health-package">Popular Health Packages</a>
+                <a href="#customized">Customized Health Tests</a>
             </div>
             <div class="col">
-                <h4>Doctors</h4>
-                <a href="#">Doctor's Wellness</a>
-                <a href="#">Directory of Service</a>
-                <a href="#">Publications</a>
+                 <div class="heading">
+                    <h4>Our Team of Experts</h4>
+                </div>
+                <a href="/doctors-profile">Dr. Himani Rastogi</a>
+                <a href="/doctors-profile">Dr. Tanima Mandal</a>
+                <a href="/doctors-profile">Dr. Piyush Hari</a>
+            </div>
+           
+            <div class="col">
+                <div class="heading">
+                    <h4>Book an apointment</h4>
+                </div>
+                <a href="/appointment">Book Tests</a>
+               
             </div>
             <div class="col">
-                <h4>Patients</h4>
-                <a href="#">Book Tests</a>
-                <a href="#">Lab Locator</a>
-                <a href="#">Wellness Watch</a>
-            </div>
-            <div class="col">
-                <h4>Partnerships</h4>
-                <a href="#">Franchise</a>
-                <a href="#">Hospital Lab</a>
-                <a href="#">Corporate Wellness</a>
-            </div>
-            <div class="col">
-                <h4>International</h4>
-                <a href="#">USA</a>
-                <a href="#">UAE</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
+              <div class="heading">
+                    <h4>Contact Us</h4>
+                </div>
+                <a href="/contact">Our Collection Centers</a>
+              
             </div>
         </div>
     </div>

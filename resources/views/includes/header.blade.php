@@ -29,12 +29,12 @@
         }
 
         .top-bar {
-            max-width: 1050px;
+            max-width: 1140px;
             margin: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 18px 10px;
+            padding: 18px 24px;
 
         }
 
@@ -45,7 +45,7 @@
 
 
         .logo {
-            height: 67px;
+            height: 75px;
             width: 170px;
         }
 
@@ -53,7 +53,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: 130px;
+            margin-left: 30px;
         }
 
         .info-item {
@@ -110,6 +110,29 @@
         .icon {
             font-size: 10px;
         }
+        
+         .social-icons-1 {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-right: 14px;
+        }
+
+
+        .social-icons-1 a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            /* background: #5a2d91; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #5A2D92;
+            color: #5a2d91;
+        }
 
         .customer {
             display: flex;
@@ -155,18 +178,17 @@
             color: #4b2a7b;
         }
 
-       
 
         .navbar {
-        background: #5a2d91;
-    padding: 21px 129px;
-    border-radius: 15px 15px 0px 0px;
-    margin: 10px 123px;
-    display: flex;
-    gap: 83px;
-    color: #fff;
-    width: 998px;
-
+            background: #5a2d91;
+            padding: 19px 135px;
+            border-radius: 15px 15px 0px 0px;
+            /*margin: 1px 135px;*/
+            display: flex;
+            gap: 83px;
+            color: #fff;
+            width: 1081px;
+            margin: 1px auto;
         }
 
         .navbar a {
@@ -185,17 +207,30 @@
             height: 20px;
             object-fit: contain;
         }
-
         .hero {
-            margin: 0 123px;
-            background: linear-gradient(135deg, #cbb4e3, #e5d8f3);
-            border-radius: 12px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 1000px;
+            flex-direction: column;
+            width: auto;
+            text-align: center;
+            background-image: url('{{ $heroImage ?? asset("assets/ecg-2.jpeg") }}');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 314px;
+
         }
+        
+        .appointment-hero {
+            flex-direction: column;
+            width: auto;
+            text-align: center;
+            background-image: url('{{ $heroImage ?? asset("assets/ecg-2.jpeg") }}');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 279px;
+        }
+
+
 
         .hero-left img {
             width: 150px;
@@ -244,74 +279,135 @@
             color: #5a2d91;
         }
 
-        @media (max-width: 768px) {
+      @media (max-width: 768px) {
 
-            .top-bar {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 10px 15px;
-            }
+    body {
+        overflow-x: hidden;
+    }
 
-            .top-info {
-                display: none;
-            }
+    .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 15px;
+        position: relative;
+    }
 
-            .icon {
-                display: flex;
-                align-items: center;
-                gap: 18px;
-                margin-right: 44px;
-            }
+    .top-info {
+        display: none;
+    }
 
-            .icons {
-                gap: 15px;
-                margin-right: 0;
-            }
+    .logo-wrap {
+        width: auto;
+        height: auto;
+    }
 
-            .hamburger {
-                display: block;
-            }
+    .logo {
+        width: 140px;
+        height: auto;
+    }
 
-            .navbar {
-                position: absolute;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                flex-direction: column;
-                gap: 15px;
-                padding: 20px;
-                margin: 0;
-                border-radius: 0;
-                display: none;
-                z-index: 999;
-            }
+    .icon {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-right: 0;
+    }
 
-            .navbar.active {
-                display: flex;
-            }
+    .icons-1,
+    .icons-2,
+    .icons-3 {
+        width: 22px;
+        height: 22px;
+    }
 
-            .hero {
-                flex-direction: column;
-                margin: 10px;
-                width: auto;
-                padding: 20px;
-                text-align: center;
-            }
+    .hamburger {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        color: #5a2d91;
+    }
 
-            .hero-left img {
-                width: 120px;
-                margin-bottom: 20px;
-            }
+    /* MOBILE MENU */
 
-            .search-box {
-                width: 100%;
-            }
+    .navbar {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: #5a2d91;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 20px;
+        margin: 0;
+        border-radius: 0;
+        display: none;
+        z-index: 999;
+    }
 
-            .upload-btn {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-        }
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar a {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+        width: 100%;
+        height: 180px;
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .appointment-hero{
+         width: 100%;
+        height: 88px;
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    
+
+    .hero-left img {
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .search-box input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .location {
+        padding: 12px 10px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .upload-btn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
     </style>
 </head>
 
@@ -324,31 +420,39 @@
                 <img src="{{ asset('assets/logo.png') }}" class="logo">
             </div>
             <div class="top-info">
-                <div class="info-item">
+                <!-- <div class="info-item">
                     <div>
                         <img src="{{ asset('assets/call.png') }}">
                     </div>
                     <div class="customer">
                         <span>Customer Care</span>
-                        <strong>9700 36 9700</strong>
+                        <strong>9055449055</strong>
                     </div>
-                </div>
-                <div class="divider"></div>
+                </div> -->
+                <!-- <div class="divider"></div> -->
                 <div class="info-item">
                     <div>
                         <img src="{{ asset('assets/home.png') }}">
                     </div>
                     <div class="book">
                         <span>Book a Home Visit</span>
-                        <strong>8939 06 6655</strong>
+                        <strong>9055449055</strong>
                     </div>
                 </div>
             </div>
-            <div class="icon">
+             <div class="social-icons-1">
+                <a href="https://www.facebook.com/neuberg.varanasi" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
 
-                <img src="{{ asset('assets/india.png') }} " class="icons-1">
-                <img src="{{ asset('assets/user.png') }}" class="icons-2">
-                <img src="{{ asset('assets/cart.png') }}" class="icons-3">
+                <a href="https://www.instagram.com/neuberglab.varanasi/?hl=en" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/company/neuberg-diagnostics-varanasi" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
             </div>
         </div>
     </div>
@@ -362,7 +466,7 @@
         </a>
 
         <a href="/doctors-profile">
-            <img src="{{ asset('assets/menu-dr.png') }}" alt="">
+           <img src="{{ asset('assets/menu-dr-3.png') }}" alt="">
             Doctor's Profile
         </a>
 
@@ -379,9 +483,9 @@
     </div>
 
 
-    <div class="hero">
+     <div class="hero {{ $heroClass ?? '' }}">
         <div class="hero-left">
-            <img src="doctor.png" alt="Banner Image">
+           
         </div>
     </div>
 </body>
