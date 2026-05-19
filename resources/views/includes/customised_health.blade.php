@@ -581,16 +581,16 @@
 
         "MEN": [{
                 name: "Prostate Specific Antigen",
-                price: "Starting from Rs."
+                price: "Starting from Rs.900"
               
             },
             {
                 name: "SEMEN TEST",
-                price: "Starting from Rs."
+                price: "Starting from Rs.1500"
             },
             {
                 name: "TESTOSTERONE",
-                price: "Starting from Rs."
+                price: "Starting from Rs.660"
             },
             {
                 name: " NEU- ENERGY & METABOLIS",
@@ -613,19 +613,19 @@
 
         "WOMAN": [{
                 name: "DUAL MARKER",
-                price: "Starting from Rs.",
+                price: "Starting from Rs.2250",
             },
             {
                 name: "Quadraple marker",
-                price: "Starting from Rs.",
+                price: "Starting from Rs.3500",
             },
             {
                 name: "NIPT",
-                price: "Starting from Rs.",
+                price: "Starting from Rs.12000",
             },
             {
                 name: "PAP SMEAR",
-                price: "Starting from Rs.",
+                price: "Starting from Rs.1500",
             },
             {
                 name: "NEU- ENERGY & METABOLISM",

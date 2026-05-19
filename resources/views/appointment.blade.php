@@ -169,6 +169,42 @@
 
         <button type="submit">Get a Call Back</button>
     </form>
+</div> 
+
+<div class="enquiry-card">
+    
+    <h2>Book Appointment</h2>
+
+    {{-- SUCCESS TOAST --}}
+   {{-- SUCCESS TOAST --}}
+@if(session('success'))
+    <div class="toast-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('whatsapp_url'))
+<script>
+    setTimeout(() => {
+        window.location.href = "{{ session('whatsapp_url') }}";
+    }, 1500);
+</script>
+@endif
+
+    <form method="POST" action="{{ route('appointment.store') }}">
+        @csrf
+
+        <input type="text" name="name" placeholder="Full Name" value="{{ old('name') }}">
+        @error('name') <div class="error">{{ $message }}</div> @enderror
+
+        <input type="number" name="age" placeholder="Age" value="{{ old('age') }}">
+        @error('age') <div class="error">{{ $message }}</div> @enderror
+
+        <input type="text" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+        @error('phone') <div class="error">{{ $message }}</div> @enderror
+
+        <button type="submit">Get a Callback</button>
+    </form>
 </div>
 
 

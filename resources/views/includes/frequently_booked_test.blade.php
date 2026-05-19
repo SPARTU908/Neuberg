@@ -154,35 +154,35 @@ $tests = [
 'name' => 'Rheumatoid Factor by Nephelometry',
 'includes' => 'Includes 1 Test',
 'report' => '5 hours',
-'price' => 'xx'
+'price' => '300'
 ],
 
 [
 'name' => 'Blood Group & RH',
 'includes' => 'Includes 2 Test',
 'report' => '4 hours',
-'price' => 'xx'
+'price' => '100'
 ],
 
 [
 'name' => 'Bilirubin level Total',
 'includes' => 'Includes 3 Test',
 'report' => '4 hours',
-'price' => 'xx'
+'price' => '280'
 ],
 
 [
 'name' => 'SGOT (AST)',
 'includes' => 'Includes 1 Test',
 'report' => '4 hours',
-'price' => 'xx'
+'price' => '100'
 ],
 
 [
 'name' => 'SGPT (ALT)',
 'includes' => 'Includes 1 Test',
 'report' => '4 hours',
-'price' => 'xx'
+'price' => '100'
 ],
 
 [
@@ -192,6 +192,8 @@ $tests = [
 'price' => 'xx'
 ],
 
+
+
 ];
 @endphp
 
@@ -199,9 +201,6 @@ $tests = [
 <div class="test-section">
 
     <h2 class="section-title" id="frequently-booked-tests">Frequently Booked Tests</h2>
-
-    <!-- Swiper -->
-
 
 
     <div class="swiper testSwiper">
@@ -213,9 +212,20 @@ $tests = [
             <!-- IMPORTANT -->
             <div class="swiper-slide">
 
-                <div class="test-card">
+                <div class="test-card search-item-box"
+                    data-title="{{ strtolower($test['name']) }}"
+                    data-type="test">
 
-                   <a href="{{ url('/appointment') }}" class="plus-icon">+</a>
+                    <!-- <a href="{{ route('book.test', ['test' => $test['name']]) }}" class="plus-icon">+</a> -->
+
+                  <form class="cart-form" action="{{ route('cart.add') }}" method="POST">
+    @csrf
+
+    <input type="hidden" name="name" value="{{ $test['name'] }}">
+    <input type="hidden" name="price" value="{{ $test['price'] }}">
+
+    <button type="submit" class="plus-icon">+</button>
+</form>
 
                     <h3>{{ $test['name'] }}</h3>
 
@@ -245,6 +255,10 @@ $tests = [
         <div class="swiper-pagination"></div>
 
     </div>
+
+    <div id="cartToast" class="cart-toast">
+    Item added to cart successfully
+</div>
 
 </div>
 
@@ -299,7 +313,7 @@ $tests = [
         box-shadow: 0 5px 14px rgba(90, 45, 145, 0.15);
     }
 
-   
+
     .plus-icon {
         position: absolute;
         top: -11px;
@@ -391,222 +405,260 @@ $tests = [
    DESKTOP DESIGN SAME RAHEGA
 ================================= */
 
-@media (max-width: 1024px) {
+    @media (max-width: 1024px) {
 
-    .test-section {
-        max-width: 100%;
-        padding: 0 16px;
-        margin: 60px auto;
+        .test-section {
+            max-width: 100%;
+            padding: 0 16px;
+            margin: 60px auto;
+        }
+
+        .section-title {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .test-card {
+            min-height: 185px;
+            padding: 18px;
+        }
+
+        .test-card h3 {
+            font-size: 20px;
+            line-height: 1.4;
+            padding-right: 28px;
+        }
+
+        .includes,
+        .report {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .price {
+            font-size: 18px;
+        }
+
+        .corner-icon {
+            width: 55px;
+        }
+
+        .plus-icon {
+            width: 44px;
+            height: 44px;
+            font-size: 34px;
+        }
     }
 
-    .section-title {
-        font-size: 42px;
-        line-height: 1.2;
-        margin-bottom: 24px;
-    }
 
-    .test-card {
-        min-height: 185px;
-        padding: 18px;
-    }
-
-    .test-card h3 {
-        font-size: 20px;
-        line-height: 1.4;
-        padding-right: 28px;
-    }
-
-    .includes,
-    .report {
-        font-size: 16px;
-        line-height: 1.5;
-    }
-
-    .price {
-        font-size: 18px;
-    }
-
-    .corner-icon {
-        width: 55px;
-    }
-
-    .plus-icon {
-        width: 44px;
-        height: 44px;
-        font-size: 34px;
-    }
-}
-
-
-/* ==============================
+    /* ==============================
    MOBILE VIEW
    ONLY 1 CARD IN A ROW
 ================================= */
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    .test-section {
-        width: 100%;
-        padding: 0 14px;
-        margin: 40px auto;
-        overflow: hidden;
+        .test-section {
+            width: 100%;
+            padding: 0 14px;
+            margin: 40px auto;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #333;
+        }
+
+        .testSwiper {
+            width: 100%;
+            overflow: hidden;
+            padding-bottom: 35px;
+        }
+
+        .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+
+        .test-card {
+            width: 100%;
+            min-height: 118px;
+            padding: 12px 12px 14px;
+            border-radius: 12px;
+            position: relative;
+
+            background: #fffdfc;
+            border: 1px solid #d7b6ef;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+            margin-bottom: 10px;
+        }
+
+        .test-card h3 {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #6c35b3;
+
+            padding-right: 26px;
+            margin-bottom: 6px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .includes {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #b06be0;
+
+            margin-bottom: 10px;
+        }
+
+        .report {
+            display: none;
+        }
+
+        .footer-price {
+            margin-top: 0;
+        }
+
+        .price {
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a4a4a;
+        }
+
+        .corner-icon {
+            width: 24px;
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+        }
+
+        .plus-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+
+            position: absolute;
+            top: -10px;
+            right: -6px;
+
+            background: #6c35b3;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1;
+
+            text-decoration: none;
+        }
+
+        /* PAGINATION */
+
+        .swiper-pagination {
+            bottom: -8px !important;
+        }
+
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: #c9c9c9;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #b26be3;
+            width: 8px;
+            border-radius: 50%;
+        }
     }
 
-    .section-title {
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 18px;
-        color: #333;
-    }
 
-    .testSwiper {
-        width: 100%;
-        overflow: hidden;
-        padding-bottom: 35px;
-    }
+    /* TOAST MESSAGE */
 
-    .swiper-slide {
-        height: auto;
-        display: flex;
-    }
+.cart-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #6c35b3;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 99999;
 
-    .test-card {
-        width: 100%;
-        min-height: 118px;
-        padding: 12px 12px 14px;
-        border-radius: 12px;
-        position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
 
-        background: #fffdfc;
-        border: 1px solid #d7b6ef;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
-        margin-bottom: 10px;
-    }
-
-    .test-card h3 {
-        font-size: 13px;
-        font-weight: 700;
-        line-height: 1.15;
-        color: #6c35b3;
-
-        padding-right: 26px;
-        margin-bottom: 6px;
-
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .includes {
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 1.2;
-        color: #b06be0;
-
-        margin-bottom: 10px;
-    }
-
-    .report {
-        display: none;
-    }
-
-    .footer-price {
-        margin-top: 0;
-    }
-
-    .price {
-        font-size: 14px;
-        font-weight: 700;
-        color: #4a4a4a;
-    }
-
-    .corner-icon {
-        width: 24px;
-        position: absolute;
-        bottom: 12px;
-        right: 12px;
-    }
-
-    .plus-icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-
-        position: absolute;
-        top: -10px;
-        right: -6px;
-
-        background: #6c35b3;
-        color: #fff;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 22px;
-        font-weight: 700;
-        line-height: 1;
-
-        text-decoration: none;
-    }
-
-    /* PAGINATION */
-
-    .swiper-pagination {
-        bottom: -8px !important;
-    }
-
-    .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        background: #c9c9c9;
-        opacity: 1;
-    }
-
-    .swiper-pagination-bullet-active {
-        background: #b26be3;
-        width: 8px;
-        border-radius: 50%;
-    }
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
-   
+
+.cart-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<!-- 
-<script>
+
+<!-- <script>
     new Swiper(".testSwiper", {
 
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        /* IMPORTANT */
-
-        spaceBetween: 28,
+        slidesPerView: 2.2,
+        slidesPerGroup: 2,
+        spaceBetween: 12,
         loop: false,
 
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
         },
+
         breakpoints: {
 
             0: {
                 slidesPerView: 2.2,
                 slidesPerGroup: 2,
-                spaceBetween: 12
+                spaceBetween: 12,
+                grid: {
+                    rows: 1
+                }
             },
 
             576: {
-                slidesPerView: 2.5,
+                slidesPerView: 2.2,
                 slidesPerGroup: 2,
-                spaceBetween: 16
+                spaceBetween: 14,
+                grid: {
+                    rows: 1
+                }
             },
 
             992: {
                 slidesPerView: 3,
-                slidesPerGroup: 3,
-                spaceBetween: 28
+                slidesPerGroup: 6,
+                spaceBetween: 28,
+
+                grid: {
+                    rows: 2,
+                    fill: 'row'
+                }
             }
         }
     });
@@ -614,49 +666,110 @@ $tests = [
 
 
 <script>
-   new Swiper(".testSwiper", {
+    // SWIPER
+    new Swiper(".testSwiper", {
 
-    slidesPerView: 2.2,
-    slidesPerGroup: 2,
-    spaceBetween: 12,
-    loop: false,
+        slidesPerView: 2.2,
+        slidesPerGroup: 2,
+        spaceBetween: 12,
+        loop: false,
 
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
+        preventClicks: false,
+        preventClicksPropagation: false,
 
-    breakpoints: {
-
-        0: {
-            slidesPerView: 2.2,
-            slidesPerGroup: 2,
-            spaceBetween: 12,
-            grid: {
-                rows: 1
-            }
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
         },
 
-        576: {
-            slidesPerView: 2.2,
-            slidesPerGroup: 2,
-            spaceBetween: 14,
-            grid: {
-                rows: 1
-            }
-        },
+        breakpoints: {
 
-        992: {
-            slidesPerView: 3,
-            slidesPerGroup: 6,
-            spaceBetween: 28,
+            0: {
+                slidesPerView: 2.2,
+                slidesPerGroup: 2,
+                spaceBetween: 12,
+                grid: {
+                    rows: 1
+                }
+            },
 
-            grid: {
-                rows: 2,
-                fill: 'row'
+            576: {
+                slidesPerView: 2.2,
+                slidesPerGroup: 2,
+                spaceBetween: 14,
+                grid: {
+                    rows: 1
+                }
+            },
+
+            992: {
+                slidesPerView: 3,
+                slidesPerGroup: 6,
+                spaceBetween: 28,
+
+                grid: {
+                    rows: 2,
+                    fill: 'row'
+                }
             }
         }
-    }
-});
+    });
 
+
+    // AJAX ADD TO CART + TOAST
+
+  document.querySelectorAll('.cart-form').forEach(form => {
+
+    form.addEventListener('submit', function(e) {
+
+        e.preventDefault();
+
+        let formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': this.querySelector('input[name="_token"]').value,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: formData
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            console.log(data);
+
+            // TOAST
+            let toast = document.getElementById('cartToast');
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+
+
+            // CART COUNT UPDATE
+            let cartCount = document.querySelector('.cart-count');
+
+            if(cartCount && data.cart_count !== undefined){
+
+                cartCount.innerText = data.cart_count;
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.log('Cart Error:', error);
+
+        });
+
+    });
+
+});
 </script>

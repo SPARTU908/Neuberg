@@ -2,11 +2,7 @@
 @include('includes.header')
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+   
 
     body {
         font-family: 'Maven Pro', sans-serif;
@@ -196,7 +192,7 @@ $doctors = [
 
     [
         "name" => "Dr. Tanima Mandal",
-        "role" => "M.D. (Pathologist)",
+        "role" => " 6+ Years in M.D. (Pathologist)",
         "experience" => "6+ YEARS",
         "exp_text" => "OF EXPERIENCE IN HEMATOLOGY & BIOCHEMISTRY",
         "image" => asset('assets/doctor-profile/p11-new.jpeg'),
@@ -205,7 +201,7 @@ $doctors = [
 
     [
         "name" => "Dr. Piyush Hari",
-        "role" => "M.D. (Microbiologist)",
+        "role" => "8+ Years in M.D. (Microbiologist)",
         "experience" => "8+ YEARS",
         "exp_text" => "OF EXPERIENCE IN MICROBIOLOGY",
         "image" => asset('assets/doctor-profile/p12-new.jpeg'),

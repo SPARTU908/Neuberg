@@ -110,8 +110,8 @@
         .icon {
             font-size: 10px;
         }
-        
-         .social-icons-1 {
+
+        .social-icons-1 {
             display: flex;
             gap: 15px;
             align-items: center;
@@ -207,6 +207,7 @@
             height: 20px;
             object-fit: contain;
         }
+
         .hero {
             flex-direction: column;
             width: auto;
@@ -218,7 +219,7 @@
             height: 314px;
 
         }
-        
+
         .appointment-hero {
             flex-direction: column;
             width: auto;
@@ -229,6 +230,8 @@
             background-repeat: no-repeat;
             height: 279px;
         }
+
+
 
 
 
@@ -279,135 +282,164 @@
             color: #5a2d91;
         }
 
-      @media (max-width: 768px) {
+        @media (max-width: 768px) {
 
-    body {
-        overflow-x: hidden;
-    }
+            body {
+                overflow-x: hidden;
+            }
 
-    .top-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 15px;
-        position: relative;
-    }
+            .top-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 12px 15px;
+                position: relative;
+            }
 
-    .top-info {
-        display: none;
-    }
+            .top-info {
+                display: none;
+            }
 
-    .logo-wrap {
-        width: auto;
-        height: auto;
-    }
+            .logo-wrap {
+                width: auto;
+                height: auto;
+            }
 
-    .logo {
-        width: 140px;
-        height: auto;
-    }
+            .logo {
+                width: 140px;
+                height: auto;
+            }
 
-    .icon {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-right: 0;
-    }
+            .icon {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                margin-right: 0;
+            }
 
-    .icons-1,
-    .icons-2,
-    .icons-3 {
-        width: 22px;
-        height: 22px;
-    }
+            .icons-1,
+            .icons-2,
+            .icons-3 {
+                width: 22px;
+                height: 22px;
+            }
 
-    .hamburger {
-        display: block;
-        font-size: 28px;
-        cursor: pointer;
-        color: #5a2d91;
-    }
+            .hamburger {
+                display: block;
+                font-size: 28px;
+                cursor: pointer;
+                color: #5a2d91;
+            }
 
-    /* MOBILE MENU */
+            /* MOBILE MENU */
 
-    .navbar {
-        position: absolute;
-        top: 78px;
-        left: 0;
-        width: 100%;
-        background: #5a2d91;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        padding: 20px;
-        margin: 0;
-        border-radius: 0;
-        display: none;
-        z-index: 999;
-    }
+            .navbar {
+                position: absolute;
+                top: 78px;
+                left: 0;
+                width: 100%;
+                background: #5a2d91;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+                padding: 20px;
+                margin: 0;
+                border-radius: 0;
+                display: none;
+                z-index: 999;
+            }
 
-    .navbar.active {
-        display: flex;
-    }
+            .navbar.active {
+                display: flex;
+            }
 
-    .navbar a {
-        width: 100%;
-        font-size: 15px;
-    }
+            .navbar a {
+                width: 100%;
+                font-size: 15px;
+            }
 
-    /* HERO SECTION */
+            /* HERO SECTION */
 
-    .hero {
-        width: 100%;
-        height: 180px;
-        margin: 0;
-        padding: 0;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .appointment-hero{
-         width: 100%;
-        height: 88px;
-        margin: 0;
-        padding: 0;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    
+            .hero {
+                width: 100%;
+                height: 180px;
+                margin: 0;
+                padding: 0;
+                background-size: cover;
+                background-position: center;
+            }
 
-    .hero-left img {
-        width: 100%;
-        max-width: 140px;
-        height: auto;
-    }
+            .appointment-hero {
+                width: 100%;
+                height: 88px;
+                margin: 0;
+                padding: 0;
+                background-size: cover;
+                background-position: center;
+            }
 
-    /* SEARCH */
 
-    .search-box {
-        width: 100%;
-        flex-direction: row;
-    }
 
-    .search-box input {
-        width: 100%;
-        font-size: 14px;
-    }
+            .hero-left img {
+                width: 100%;
+                max-width: 140px;
+                height: auto;
+            }
 
-    .location {
-        padding: 12px 10px;
-        font-size: 13px;
-        white-space: nowrap;
-    }
+            /* SEARCH */
 
-    .upload-btn {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 10px;
-        text-align: center;
-    }
-}
+            .search-box {
+                width: 100%;
+                flex-direction: row;
+            }
+
+            .search-box input {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .location {
+                padding: 12px 10px;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .upload-btn {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 10px;
+                text-align: center;
+            }
+        }
+
+
+        .cart-icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+
+            width: 22px;
+            height: 22px;
+
+            background: #6c35b3;
+            color: #fff;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            line-height: 1;
+        }
     </style>
 </head>
 
@@ -440,7 +472,7 @@
                     </div>
                 </div>
             </div>
-             <div class="social-icons-1">
+            <div class="social-icons-1">
                 <a href="https://www.facebook.com/neuberg.varanasi" target="_blank">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
@@ -452,6 +484,26 @@
                 <a href="https://www.linkedin.com/company/neuberg-diagnostics-varanasi" target="_blank">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
+
+
+
+            </div>
+
+            <div class="icon cart-icon-wrapper">
+
+              <a href="{{ route('cart.view') }}" class="cart-link">
+                    <div class="icon cart-icon-wrapper">
+
+                        <img src="{{ asset('assets/cart.png') }}" class="icons-3">
+
+                        <span class="cart-count">
+                            {{ count(session('cart', [])) }}
+                        </span>
+
+                    </div>
+
+                </a>
+
 
             </div>
         </div>
@@ -466,7 +518,7 @@
         </a>
 
         <a href="/doctors-profile">
-           <img src="{{ asset('assets/menu-dr-3.png') }}" alt="">
+            <img src="{{ asset('assets/menu-dr-3.png') }}" alt="">
             Doctor's Profile
         </a>
 
@@ -483,9 +535,9 @@
     </div>
 
 
-     <div class="hero {{ $heroClass ?? '' }}">
+    <div class="hero {{ $heroClass ?? '' }}">
         <div class="hero-left">
-           
+
         </div>
     </div>
 </body>
