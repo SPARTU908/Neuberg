@@ -4,27 +4,27 @@
 
     <div class="custom-grid">
 
-        <div class="custom-card search-item-box" data-title="MEN" data-type="custom">
+        <div class="custom-card search-item-box" data-title="MEN" data-type="custom"  data-category="men">
             <img src="{{ asset('assets/men.png') }}">
             <p>MEN</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="WOMAN" data-type="custom">
+        <div class="custom-card search-item-box" data-title="WOMEN" data-type="custom" data-category="women">
             <img src="{{ asset('assets/women.png') }}">
             <p>WOMAN</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="PREVENTIVE HEALTH" data-type="custom">
+        <div class="custom-card search-item-box" data-title="PREVENTIVE HEALTH" data-type="custom"  data-category="preventive health">
             <img src="{{ asset('assets/women.png') }}">
             <p>PREVENTIVE HEALTH</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="SENIOR CITIZENS" data-type="custom">
+        <div class="custom-card search-item-box" data-title="SENIOR CITIZENS" data-type="custom"  data-category="senior citizens">
             <img src="{{ asset('assets/senior.png') }}">
             <p>SENIOR CITIZENS</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="ALLTESTS" data-type="custom">
+        <div class="custom-card search-item-box" data-title="ALLTESTS" data-type="custom"  data-category="all">
             <img src="{{ asset('assets/all_test.png') }}">
             <p>ALLTESTS</p>
         </div>
