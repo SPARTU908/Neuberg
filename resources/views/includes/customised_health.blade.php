@@ -11,7 +11,7 @@
 
         <div class="custom-card search-item-box" data-title="WOMEN" data-type="custom" data-category="women">
             <img src="{{ asset('assets/women.png') }}">
-            <p>WOMAN</p>
+            <p>WOMEN</p>
         </div>
 
         <div class="custom-card search-item-box" data-title="PREVENTIVE HEALTH" data-type="custom"  data-category="preventive health">
@@ -611,7 +611,7 @@
             }
         ],
 
-        "WOMAN": [{
+        "WOMEN": [{
                 name: "DUAL MARKER",
                 price: "Starting from Rs.2250",
             },

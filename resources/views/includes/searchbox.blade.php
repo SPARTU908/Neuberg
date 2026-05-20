@@ -1,17 +1,21 @@
 <div class="premium-search">
 
+    <!-- FILTER -->
+
     <div class="filter-box">
 
         <select id="filterDropdown">
 
-            <option value="all">Filter By:</option>
+          <option value="" selected disabled>
+    Filter By
+</option>
 
-            <option value="test">
-                Frequently Booked
+            <option value="frequently booked">
+                Frequently Booked Tests
             </option>
 
-            <option value="package">
-                Popular
+            <option value="popular package">
+                Popular Health Packages
             </option>
 
             <option value="men">
@@ -22,18 +26,20 @@
                 Women
             </option>
 
-            <option value="senior citizens">
-                Senior Citizens
-            </option>
-
             <option value="preventive health">
                 Preventive Health
+            </option>
+
+            <option value="senior citizens">
+                Senior Citizens
             </option>
 
         </select>
 
     </div>
 
+
+    <!-- SEARCH BOX -->
 
     <div class="search-box">
 
@@ -44,7 +50,9 @@
             autocomplete="off">
 
         <span class="search-icon">
+
             <img src="{{ asset('assets/search_icon.svg') }}" alt="">
+
         </span>
 
     </div>
@@ -52,9 +60,20 @@
 </div>
 
 
+<!-- =========================
+SEARCH DROPDOWN
+========================= -->
+
+<div id="searchResults"
+    class="search-results d-none">
+
+</div>
 
 
-<div id="searchResults" class="search-results d-none"></div>
+<!-- =========================
+SEARCH OUTPUT SECTION
+========================= -->
+
 <div id="searchOutputSection"
     class="search-output-section d-none">
 
@@ -70,107 +89,170 @@
 </div>
 
 
+<!-- =========================
+CSS
+========================= -->
 
 <style>
-    .premium-search {
+     .premium-search {
         display: flex;
         align-items: center;
-        max-width: 750px;
-        margin: auto;
-        background: #ff8c00;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-        margin-top: 50px;
+        max-width: 740px;
+        margin: 40px auto 0;
+        border-radius: 14px;
+        overflow: visible;
+        position: relative;
+        z-index: 999;
     }
 
-    /* FILTER */
+    /* ================= FILTER ================= */
 
     .filter-box {
-        padding: 0 15px;
-        display: flex;
-        align-items: center;
+        width: 260px;
+        position: relative;
+        margin-right: 12px;
     }
 
     .filter-box select {
+        width: 100%;
+        height: 64px;
+        padding: 0 18px;
         border: none;
-        background: #ff8c00;
-        color: #fff;
-        font-weight: 500;
-        font-size: 14px;
         outline: none;
+        border-radius: 16px;
+        background: #ff9800;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
         cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        box-shadow: 0 8px 20px rgba(255, 152, 0, 0.25);
+        transition: 0.3s ease;
     }
 
+    .filter-box select:hover {
+        background: #f28b00;
+    }
 
-    /* SEARCH */
+    .filter-box::after {
+        content: "⌄";
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 24px;
+        pointer-events: none;
+    }
+
+    /* DROPDOWN OPTIONS */
+
+    .filter-box select option {
+        background: #fff;
+        color: #333;
+        padding: 12px;
+        font-size: 16px;
+    }
+    /* SEARCH BOX */
 
     .search-box {
+
         flex: 1;
+
         position: relative;
     }
 
     .search-box input {
+
         width: 100%;
-        border: none;
+
         height: 50px;
-        padding: 0 40px 0 15px;
-        font-size: 15px;
+
+        border: none;
+
         outline: none;
+
+        padding: 0 45px 0 15px;
+
+        font-size: 15px;
     }
 
     .search-icon {
+
         position: absolute;
+
         right: 12px;
+
         top: 50%;
+
         transform: translateY(-50%);
     }
 
 
-    /* DROPDOWN */
+    /* SEARCH DROPDOWN */
 
     .search-results {
+
         max-width: 750px;
+
         margin: 5px auto;
+
         background: #fff;
+
         border-radius: 10px;
+
         border: 1px solid #eee;
+
         max-height: 300px;
+
         overflow-y: auto;
+
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+
         position: relative;
+
         z-index: 9999;
     }
 
     .search-item {
-        padding: 12px;
+
+        padding: 12px 15px;
+
         cursor: pointer;
+
         border-bottom: 1px solid #f1f1f1;
+
+        transition: 0.2s;
     }
 
     .search-item:hover {
+
         background: #f8f8f8;
     }
 
 
-    /* RESULT SECTION */
+    /* SEARCH RESULT SECTION */
 
     .search-output-section {
+
         max-width: 969px;
+
         margin: 40px auto;
+
         padding: 0 20px;
     }
 
     .search-output-grid {
+
         display: grid;
+
         grid-template-columns: repeat(3, 1fr);
+
         gap: 20px;
     }
 
-
-    .d-none {
-        display: none !important;
-    }
 
     .search-result-card {
 
@@ -183,7 +265,6 @@
         border: 1px solid #ddd;
 
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-
     }
 
     .search-result-card h3 {
@@ -193,17 +274,44 @@
         margin-bottom: 10px;
 
         font-size: 18px;
-
     }
 
     .search-result-card p {
 
         color: #666;
 
-        margin-bottom: 15px;
-
+        margin-bottom: 10px;
     }
 
+
+    .search-result-card .cart-btn {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 10px 18px;
+
+        border-radius: 8px;
+
+        background: linear-gradient(90deg, #5a2d91, #9b63d1);
+
+        color: #fff;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        margin-top: 10px;
+    }
+
+
+    .d-none {
+
+        display: none !important;
+    }
 
 
     /* MOBILE */
@@ -211,476 +319,501 @@
     @media(max-width:768px) {
 
         .premium-search {
+
             margin: 30px 14px 0;
         }
 
         .search-output-grid {
+
             grid-template-columns: 1fr;
         }
 
+        .filter-box select {
+
+            font-size: 12px;
+        }
+
+        .search-box input {
+
+            font-size: 14px;
+        }
     }
 </style>
 
 
 
+<!-- =========================
+SEARCH SCRIPT
+========================= -->
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
 
-        // ================= TEST DATA =================
-
-        const testData = {
-
-            MEN: [{
-                    name: "Men Health Package",
-                    price: 999
-                },
-                {
-                    name: "Testosterone Test",
-                    price: 599
-                }
-            ],
-
-            WOMEN: [{
-                    name: "Women Wellness Package",
-                    price: 1199
-                },
-                {
-                    name: "Thyroid Test",
-                    price: 499
-                }
-            ],
-
-            ALLTESTS: [{
-                    name: "CBC Test",
-                    price: 299
-                },
-                {
-                    name: "Sugar Test",
-                    price: 199
-                }
-            ]
-
-        };
+document.addEventListener("DOMContentLoaded", function(){
 
 
-        // ================= SEARCHABLE ARRAY =================
+    // =========================
+    // ELEMENTS
+    // =========================
 
-        let searchableTests = [];
+    const searchInput =
+        document.getElementById("testSearch");
 
-        Object.keys(testData).forEach(category => {
+    const resultsBox =
+        document.getElementById("searchResults");
 
-            testData[category].forEach(test => {
+    const filterDropdown =
+        document.getElementById("filterDropdown");
 
-                searchableTests.push({
+    const outputSection =
+        document.getElementById("searchOutputSection");
 
-                    title: test.name,
+    const outputCards =
+        document.getElementById("searchOutputCards");
 
-                    category: category.toLowerCase(),
 
-                    price: test.price,
+    // =========================
+    // FILTER
+    // =========================
 
-                    type: category === "ALLTESTS" ?
-                        "test" :
-                        "package"
+    let currentFilter = "all";
 
-                });
+
+    // =========================
+    // MASTER SEARCH DATA
+    // =========================
+
+    let searchableData = [];
+
+
+    // =========================
+    // FREQUENTLY BOOKED TESTS
+    // =========================
+
+    document.querySelectorAll('.test-card').forEach(card => {
+
+        searchableData.push({
+
+            title:
+                card.querySelector('h3')?.innerText.trim(),
+
+            section:
+                'frequently booked',
+
+            type:
+                'test',
+
+            price:
+                card.querySelector('.price')?.innerText.trim(),
+
+            link:
+                '/appointment'
+
+        });
+
+    });
+
+
+
+    // =========================
+    // POPULAR PACKAGES
+    // =========================
+
+    document.querySelectorAll('.package-card').forEach(card => {
+
+        searchableData.push({
+
+            title:
+                card.querySelector('h3')?.innerText.trim(),
+
+            section:
+                'popular package',
+
+            type:
+                'package',
+
+            price:
+                card.querySelector('.new-price')?.innerText.trim(),
+
+            link:
+                '/appointment'
+
+        });
+
+    });
+
+
+
+    // =========================
+    // CUSTOMIZED TESTS
+    // =========================
+
+    Object.keys(testData).forEach(category => {
+
+        testData[category].forEach(test => {
+
+            searchableData.push({
+
+                title:
+                    test.name,
+
+                section:
+                    category.toLowerCase(),
+
+                type:
+                    'custom',
+
+                price:
+                    test.price,
+
+                link:
+                    '/appointment'
 
             });
 
         });
 
-
-        console.log(searchableTests);
-
-
-        // ================= ELEMENTS =================
-
-        const searchInput =
-            document.getElementById("testSearch");
-
-        const resultsBox =
-            document.getElementById("searchResults");
-
-        const filterDropdown =
-            document.getElementById("filterDropdown");
-
-        const outputSection =
-            document.getElementById("searchOutputSection");
-
-        const outputCards =
-            document.getElementById("searchOutputCards");
+    });
 
 
-        // ================= FILTER =================
 
-        let currentFilter = "all";
-
-
-        // ================= SHOW ALL =================
-
-        function showAll() {
-
-            document
-                .querySelectorAll(".swiper-slide")
-                .forEach(slide => {
-
-                    slide.style.display = "flex";
-
-                });
+    console.log(searchableData);
 
 
-            document
-                .querySelectorAll(".custom-card")
-                .forEach(el => {
 
-                    el.style.display = "block";
+    // =========================
+    // PLACEHOLDER UPDATE
+    // =========================
 
-                });
+    function updatePlaceholder(filter){
+
+        let text =
+            "Search for Tests & Packages";
 
 
-            document
-                .querySelectorAll(".swiper")
-                .forEach(sw => {
+        if(filter === 'frequently booked'){
 
-                    if (sw.swiper) {
-
-                        sw.swiper.update();
-
-                    }
-
-                });
-
+            text =
+                "Search test related to frequently booked tests";
         }
 
+        else if(filter === 'popular package'){
 
-        // ================= PLACEHOLDER =================
-
-        function updatePlaceholder(filter) {
-
-            let text =
-                "Search for Tests & Packages";
-
-
-            if (filter === "test") {
-
-                text =
-                    "Search frequently booked tests";
-
-            } else if (filter === "package") {
-
-                text =
-                    "Search popular packages";
-
-            } else if (filter === "men") {
-
-                text =
-                    "Search tests for men";
-
-            } else if (filter === "women") {
-
-                text =
-                    "Search tests for women";
-
-            } else if (filter === "senior citizens") {
-
-                text =
-                    "Search tests for senior citizens";
-
-            } else if (filter === "preventive health") {
-
-                text =
-                    "Search preventive health tests";
-
-            }
-
-            searchInput.placeholder = text;
-
+            text =
+                "Search popular health packages";
         }
 
+        else if(filter === 'men'){
 
-        // ================= SEARCH FUNCTION =================
+            text =
+                "Search tests related to men";
+        }
 
-        function performSearch(keyword = "") {
+        else if(filter === 'women'){
 
-            keyword =
-                keyword.toLowerCase().trim();
+            text =
+                "Search tests related to women";
+        }
 
+        else if(filter === 'preventive health'){
 
-            let matches = [];
+            text =
+                "Search preventive health tests";
+        }
 
+        else if(filter === 'senior citizens'){
 
-            searchableTests.forEach(test => {
+            text =
+                "Search tests related to senior citizens";
+        }
 
-                let title =
-                    (test.title || "")
-                    .toLowerCase();
+        searchInput.placeholder = text;
 
-                let type =
-                    (test.type || "")
-                    .toLowerCase();
-
-                let category =
-                    (test.category || "")
-                    .toLowerCase();
-
-
-                let matchFilter = false;
-
-
-                // ================= FILTER LOGIC =================
-
-              if(currentFilter === "all"){
-
-    matchFilter = true;
-
-}
-
-else if(
-    currentFilter === "test"
-    &&
-    type === "test"
-){
-
-    matchFilter = true;
-
-}
-
-else if(
-    currentFilter === "package"
-    &&
-    type === "package"
-){
-
-    matchFilter = true;
-
-}
-
-else if(category === currentFilter){
-
-    matchFilter = true;
-
-}
-
-                // ================= SEARCH MATCH =================
-
-                if (
-
-                    matchFilter
-
-                    &&
-
-                    (
-
-                        keyword === ""
-
-                        ||
-
-                        title.includes(keyword)
-
-                    )
-
-                ) {
-
-                    matches.push(test);
-
-                }
-
-            });
+    }
 
 
-            // ================= DROPDOWN =================
 
-            resultsBox.innerHTML = matches.length
+    // =========================
+    // SEARCH FUNCTION
+    // =========================
 
-                ?
+    function performSearch(keyword = ''){
 
-                matches.map(m => `
-
-            <div class="search-item"
-                 data-title="${m.title}">
-
-                ${m.title}
-
-            </div>
-
-        `).join('')
-
-                :
-
-                `
-
-        <div class="search-item">
-
-            No results found
-
-        </div>
-
-        `;
+        keyword =
+            keyword.toLowerCase().trim();
 
 
-            resultsBox.classList.remove("d-none");
+        let filtered = searchableData.filter(item => {
+
+            let matchKeyword =
+                item.title.toLowerCase().includes(keyword);
 
 
-            // ================= RESULT SECTION =================
+            let matchFilter =
 
-            outputSection.classList.remove("d-none");
+                currentFilter === 'all'
+
+                ||
+
+                item.section === currentFilter;
 
 
-            if (!matches.length) {
+            return matchKeyword && matchFilter;
 
-                outputCards.innerHTML = `
+        });
 
-                <p>
-                    No matching tests found.
-                </p>
+
+        renderDropdown(filtered);
+
+        renderResults(filtered);
+
+    }
+
+
+
+    // =========================
+    // RENDER DROPDOWN
+    // =========================
+
+    function renderDropdown(items){
+
+        if(!items.length){
+
+            resultsBox.innerHTML = `
+
+                <div class="search-item">
+                    No Results Found
+                </div>
 
             `;
 
-                return;
+            resultsBox.classList.remove('d-none');
 
-            }
+            return;
+        }
 
 
-            outputCards.innerHTML = matches.map(m => `
+        resultsBox.innerHTML = items.map(item => `
 
-            <div class="search-result-card">
+            <div class="search-item"
+                 data-title="${item.title}">
 
-                <h3>
-                    ${m.title}
-                </h3>
-
-                <p>
-
-                    ₹${m.price}
-
-                </p>
-
-                <p>
-
-                    ${m.category.toUpperCase()}
-
-                </p>
-
-                <a href="/appointment"
-                   class="cart-btn">
-
-                    Book Now
-
-                </a>
+                ${item.title}
 
             </div>
 
         `).join('');
 
+
+        resultsBox.classList.remove('d-none');
+
+    }
+
+
+
+    // =========================
+    // RENDER RESULTS
+    // =========================
+
+   function renderResults(items){
+
+    outputSection.classList.remove('d-none');
+
+
+    if(!items.length){
+
+        outputCards.innerHTML = `
+
+            <p>
+                No matching tests found.
+            </p>
+
+        `;
+
+        return;
+    }
+
+
+    outputCards.innerHTML = items.map(item => `
+
+        <div class="test-card search-result-card">
+
+            <form class="cart-form"
+                  action="/cart/add"
+                  method="POST">
+
+                <button type="submit" class="plus-icon">
+                    +
+                </button>
+
+            </form>
+
+            <h3>
+                ${item.title}
+            </h3>
+
+            <p class="includes">
+                Includes 1 Test
+            </p>
+
+            <p class="report">
+                Report will be sent within
+                <strong>4 hours</strong>
+            </p>
+
+            <div class="footer-price">
+
+                <p class="price">
+                    ${item.price}
+                </p>
+
+            </div>
+
+            <img src="/assets/test.png"
+                 class="corner-icon">
+
+        </div>
+
+    `).join('');
+
+}
+
+
+    // =========================
+    // SEARCH INPUT
+    // =========================
+
+   searchInput.addEventListener('keyup', function(){
+
+    let keyword =
+        this.value.trim();
+
+
+    // AGAR FILTER SELECT NHI KIYA
+
+    if(!currentFilter){
+
+        return;
+    }
+
+
+    // EMPTY SEARCH
+
+    if(keyword === ''){
+
+        let filteredItems = searchableData.filter(item => {
+
+            return item.section === currentFilter;
+
+        });
+
+        renderDropdown(filteredItems);
+
+        outputSection.classList.add('d-none');
+
+        return;
+    }
+
+
+    // SEARCH
+
+    performSearch(keyword);
+
+});
+
+
+
+    // =========================
+    // INPUT FOCUS
+    // =========================
+
+    searchInput.addEventListener('focus', function(){
+
+        performSearch('');
+
+    });
+
+
+
+    // =========================
+    // FILTER CHANGE
+    // =========================
+
+  filterDropdown.addEventListener('change', function(){
+
+    currentFilter =
+        this.value.toLowerCase();
+
+    updatePlaceholder(currentFilter);
+
+    searchInput.value = '';
+
+
+    // FILTER RELATED DROPDOWN ONLY
+
+    let filteredItems = searchableData.filter(item => {
+
+        return item.section === currentFilter;
+
+    });
+
+
+    renderDropdown(filteredItems);
+
+
+    // RESULT SECTION HIDE
+
+    outputSection.classList.add('d-none');
+
+    outputCards.innerHTML = '';
+
+});
+
+
+
+    // =========================
+    // CLICK EVENTS
+    // =========================
+
+    document.addEventListener('click', function(e){
+
+        // CLICK ON SEARCH ITEM
+
+        if(e.target.classList.contains('search-item')){
+
+            let selectedText =
+                e.target.dataset.title;
+
+            searchInput.value =
+                selectedText;
+
+            performSearch(selectedText);
+
+            resultsBox.classList.add('d-none');
+
+            return;
         }
 
 
-        // ================= SEARCH INPUT =================
+        // OUTSIDE CLICK
 
-        searchInput.addEventListener("keyup", function() {
+        const insideSearch =
 
-            let keyword =
-                this.value;
+            e.target.closest('.premium-search')
 
-            if (!keyword.trim()) {
+            ||
 
-                resultsBox.classList.add("d-none");
-
-                outputSection.classList.add("d-none");
-
-                outputCards.innerHTML = "";
-
-                showAll();
-
-                return;
-
-            }
-
-            performSearch(keyword);
-
-        });
+            e.target.closest('#searchResults');
 
 
-        // ================= INPUT FOCUS =================
+        if(!insideSearch){
 
-        searchInput.addEventListener("focus", function() {
+            resultsBox.classList.add('d-none');
 
-            performSearch("");
-
-        });
-
-
-        // ================= CLICK EVENTS =================
-
-        document.addEventListener("click", function(e) {
-
-            // CLICK ON RESULT
-
-            if (
-                e.target.classList.contains("search-item")
-            ) {
-
-                let selectedText =
-                    e.target.dataset.title;
-
-                searchInput.value =
-                    selectedText;
-
-                performSearch(selectedText);
-
-                resultsBox.classList.add("d-none");
-
-                return;
-
-            }
-
-
-            // OUTSIDE CLICK
-
-            const clickedInsideSearch =
-
-                e.target.closest(".premium-search")
-
-                ||
-
-                e.target.closest("#searchResults");
-
-
-            if (!clickedInsideSearch) {
-
-                resultsBox.classList.add("d-none");
-
-            }
-
-        });
-
-
-        // ================= FILTER CHANGE =================
-
-        filterDropdown.addEventListener(
-            "change",
-            function() {
-
-                currentFilter =
-                    this.value.toLowerCase();
-
-                searchInput.value = "";
-
-                resultsBox.classList.add("d-none");
-
-                outputSection.classList.add("d-none");
-
-                outputCards.innerHTML = "";
-
-                updatePlaceholder(currentFilter);
-
-                showAll();
-
-                performSearch("");
-
-            }
-        );
+        }
 
     });
+
+
+});
+
 </script>
