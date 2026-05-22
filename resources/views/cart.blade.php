@@ -32,6 +32,7 @@
     margin-bottom: 20px;
     font-size: 24px;
     color: #4c4b4b;
+    margin-left:50px;
 }
 
 .cart-list{
@@ -106,7 +107,139 @@
     color: #666;
     margin-top: 20px;
 }
+/* =========================
+PREMIUM CART DESIGN
+========================= */
 
+.selected-tests-wrapper{
+    margin-bottom: 25px;
+}
+
+.cart-title{
+    font-size: 18px;
+    color: #6c35b3;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.premium-cart-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #fff;
+    border: 1px solid #ead7ff;
+    border-radius: 14px;
+
+    padding: 14px 16px;
+    margin-bottom: 14px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+
+    transition: 0.25s ease;
+}
+
+.premium-cart-item:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(108,53,179,0.12);
+}
+
+.cart-left{
+    flex: 1;
+    padding-right: 12px;
+}
+
+.cart-test-name{
+    font-size: 15px;
+    font-weight: 700;
+    color: #6c35b3;
+    line-height: 1.4;
+}
+
+.cart-test-price{
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+.cart-right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn{
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.minus-btn{
+    background: #ffe4e6;
+    color: #e11d48;
+}
+
+.minus-btn:hover{
+    background: #fecdd3;
+}
+
+.plus-btn{
+    background: #ede9fe;
+    color: #6c35b3;
+}
+
+.plus-btn:hover{
+    background: #ddd6fe;
+}
+
+.qty-count{
+    min-width: 28px;
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+    .premium-cart-item{
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .cart-test-name{
+        font-size: 14px;
+    }
+
+    .cart-test-price{
+        font-size: 13px;
+    }
+
+    .qty-btn{
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .cart-right{
+        gap: 8px;
+    }
+}
 /* MOBILE */
 
 @media(max-width:480px){
@@ -162,133 +295,114 @@
 
 </style>
 
-
 <div class="cart-wrapper">
 
     <h2>Book an Appointment</h2>
 
     @if(count($cart) > 0)
 
-        <!-- <div class="cart-list">
+        {{-- SELECTED TESTS --}}
+        <div class="selected-tests-wrapper">
 
-            @foreach($cart as $key => $item)
+            <h3 class="cart-title">
+                Selected tests
+            </h3>
 
-                <div class="cart-item">
+          @php
+    $groupedCart = collect($cart)
+        ->groupBy('name')
+        ->map(function($items){
+            return [
+                'name' => $items->first()['name'],
+                'price' => $items->first()['price'],
+                'qty' => $items->count(),
+            ];
+        });
+@endphp
 
-                    <div>
-                        <strong>{{ $item['name'] }}</strong><br>
-                        ₹{{ $item['price'] }}
+@foreach($groupedCart as $item)
+                <div class="premium-cart-item">
+
+                    {{-- LEFT --}}
+                    <div class="cart-left">
+
+                        <div class="cart-test-name">
+                            {{ $item['name'] }}
+                        </div>
+
+                        <div class="cart-test-price">
+                            ₹{{ $item['price'] }}
+                        </div>
+
                     </div>
 
-                    <a href="{{ route('cart.remove', $key) }}"
-                       class="remove-btn">
-                        Remove
-                    </a>
+                    {{-- RIGHT --}}
+                  <div class="cart-right">
+
+    <button type="button"
+            class="qty-btn minus-btn qty-action"
+            data-action="minus"
+            data-name="{{ $item['name'] }}"
+            data-price="{{ $item['price'] }}">
+        −
+    </button>
+
+    <div class="qty-count">
+        {{ $item['qty'] }}
+    </div>
+
+    <button type="button"
+            class="qty-btn plus-btn qty-action"
+            data-action="plus"
+            data-name="{{ $item['name'] }}"
+            data-price="{{ $item['price'] }}">
+        +
+    </button>
+
+</div>
 
                 </div>
 
             @endforeach
 
-        </div> -->
+        </div>
 
-        <!-- <a href="{{ route('cart.clear') }}"
-           class="clear-cart">
-            Clear Cart
-        </a> -->
+        {{-- MAIN BOOKING FORM --}}
+        <form action="{{ route('cart.submit') }}"
+              method="POST"
+              class="cart-form">
 
+            @csrf
 
-        {{-- FORM --}}
-       <form action="{{ route('book.test.submit') }}"
-      method="POST"
-      class="cart-form">
+            {{-- HIDDEN TEST NAMES --}}
+            <input type="hidden"
+                   name="test_name"
+                   value="{{ implode(',', collect($cart)->pluck('name')->toArray()) }}">
 
-    @csrf
+            {{-- FULL NAME --}}
+            <input type="text"
+                   name="name"
+                   placeholder="Full Name"
+                   value="{{ old('name') }}">
 
-    {{-- SELECTED TESTS --}}
-    <div style="margin-bottom:20px;">
+            {{-- PHONE --}}
+            <input type="text"
+                   name="phone"
+                   placeholder="Phone Number"
+                   value="{{ old('phone') }}">
 
-        <h3 style="
-            font-size:16px;
-            margin-bottom:12px;
-            color:#6c35b3;
-            font-weight:700;
-        ">
-            Carts
-        </h3>
+            {{-- EMAIL --}}
+            <input type="email"
+                   name="email"
+                   placeholder="Email Address"
+                   value="{{ old('email') }}">
 
-        @foreach($cart as $item)
+            {{-- BUTTON --}}
+            <button type="submit">
+                Book Now Pay Later
+            </button>
 
-            <div style="
-                background:#fff;
-                border:1px solid #e9d5ff;
-                border-radius:8px;
-                padding:10px 12px;
-                margin-bottom:10px;
-            ">
-
-                <div style="
-                    display:flex;
-                    justify-content:space-between;
-                    align-items:center;
-                    gap:10px;
-                ">
-
-                    <div>
-                        <strong style="color:#6c35b3;">
-                            {{ $item['name'] }}
-                        </strong>
-
-                        <div style="
-                            font-size:13px;
-                            color:#555;
-                            margin-top:4px;
-                        ">
-                            ₹{{ $item['price'] }}
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        @endforeach
-
-    </div>
-
-
-    {{-- HIDDEN TEST NAMES --}}
-    <input type="hidden"
-           name="test_name"
-           value="{{ implode(',', collect($cart)->pluck('name')->toArray()) }}">
-
-
-    {{-- FULL NAME --}}
-    <input type="text"
-           name="name"
-           placeholder="Full Name"
-           value="{{ old('name') }}">
-
-
-    {{-- PHONE --}}
-    <input type="text"
-           name="phone"
-           placeholder="Phone Number"
-           value="{{ old('phone') }}">
-
-
-    {{-- EMAIL --}}
-    <input type="email"
-           name="email"
-           placeholder="Email Address"
-           value="{{ old('email') }}">
-
-
-    {{-- BUTTON --}}
-    <button type="submit">
-        Book Now Pay Later
-    </button>
-
-</form>
+        </form>
 
     @else
 
@@ -299,6 +413,9 @@
     @endif
 
 </div>
+
+
+
 
 
 <script>
@@ -318,5 +435,47 @@
 
 </script>
 
+
+<script>
+
+document.querySelectorAll('.qty-action').forEach(button => {
+
+    button.addEventListener('click', function(){
+
+        let action = this.dataset.action;
+        let name = this.dataset.name;
+        let price = this.dataset.price;
+
+        fetch("{{ route('cart.update.qty') }}", {
+
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+
+            body: JSON.stringify({
+                action: action,
+                name: name,
+                price: price
+            })
+
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            if(data.success){
+
+                location.reload();
+            }
+
+        });
+
+    });
+
+});
+
+</script>
 @include('includes.footer')
 

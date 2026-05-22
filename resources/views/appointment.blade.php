@@ -3,6 +3,7 @@
 @php
     $heroImage = asset('assets/appoinment-banner.png');
      $heroClass = 'appointment-hero';
+       $cart = session('cart', []);
 @endphp
 
 @include('includes.header')
@@ -131,80 +132,168 @@
 
  </style>
 
-
-
-
-
 <div class="enquiry-card">
-    
-    <h2>Book Appointment</h2>
 
-    {{-- SUCCESS TOAST --}}
-   {{-- SUCCESS TOAST --}}
-@if(session('success'))
-    <div class="toast-success">
-        {{ session('success') }}
-    </div>
-@endif
+    @if(count($cart) > 0)
 
-@if(session('whatsapp_url'))
-<script>
-    setTimeout(() => {
-        window.location.href = "{{ session('whatsapp_url') }}";
-    }, 1500);
-</script>
-@endif
+        <h2>Book Appointment</h2>
 
-    <form method="POST" action="{{ route('appointment.store') }}">
-        @csrf
+        {{-- SUCCESS MESSAGE --}}
+        @if(session('success'))
+            <div class="toast-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
-        <input type="text" name="name" placeholder="Full Name" value="{{ old('name') }}">
-        @error('name') <div class="error">{{ $message }}</div> @enderror
+        {{-- WHATSAPP REDIRECT --}}
+        @if(session('whatsapp_url'))
+        <script>
+            setTimeout(() => {
+                window.location.href = "{{ session('whatsapp_url') }}";
+            }, 1500);
+        </script>
+        @endif
 
-        <input type="number" name="age" placeholder="Age" value="{{ old('age') }}">
-        @error('age') <div class="error">{{ $message }}</div> @enderror
+        {{-- SELECTED TESTS --}}
+        <div style="margin-bottom:20px;">
 
-        <input type="text" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
-        @error('phone') <div class="error">{{ $message }}</div> @enderror
+            <h3 style="
+                font-size:15px;
+                margin-bottom:12px;
+                color:#6c35b3;
+                font-weight:700;
+            ">
+                Selected Tests
+            </h3>
 
-        <button type="submit">Get a Call Back</button>
-    </form>
-</div> 
+            @foreach($cart as $item)
 
-<div class="enquiry-card">
-    
-    <h2>Book Appointment</h2>
+                <div style="
+                    background:#fff;
+                    border:1px solid #e9d5ff;
+                    border-radius:8px;
+                    padding:10px 12px;
+                    margin-bottom:10px;
+                ">
 
-    {{-- SUCCESS TOAST --}}
-   {{-- SUCCESS TOAST --}}
-@if(session('success'))
-    <div class="toast-success">
-        {{ session('success') }}
-    </div>
-@endif
+                    <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                    ">
 
-@if(session('whatsapp_url'))
-<script>
-    setTimeout(() => {
-        window.location.href = "{{ session('whatsapp_url') }}";
-    }, 1500);
-</script>
-@endif
+                        <div>
+                            <strong style="color:#6c35b3;">
+                                {{ $item['name'] }}
+                            </strong>
 
-    <form method="POST" action="{{ route('appointment.store') }}">
-        @csrf
+                            <div style="
+                                font-size:13px;
+                                color:#555;
+                                margin-top:4px;
+                            ">
+                                ₹{{ $item['price'] }}
+                            </div>
+                        </div>
 
-        <input type="text" name="name" placeholder="Full Name" value="{{ old('name') }}">
-        @error('name') <div class="error">{{ $message }}</div> @enderror
+                    </div>
 
-        <input type="number" name="age" placeholder="Age" value="{{ old('age') }}">
-        @error('age') <div class="error">{{ $message }}</div> @enderror
+                </div>
 
-        <input type="text" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
-        @error('phone') <div class="error">{{ $message }}</div> @enderror
+            @endforeach
 
-        <button type="submit">Get a Callback</button>
-    </form>
+        </div>
+
+        {{-- FORM --}}
+        <form method="POST" action="{{ route('cart.submit') }}">
+
+            @csrf
+
+            {{-- HIDDEN TEST NAMES --}}
+            <input type="hidden"
+                name="test_name"
+                value="{{ implode(',', collect($cart)->pluck('name')->toArray()) }}">
+
+            {{-- NAME --}}
+            <input type="text"
+                name="name"
+                placeholder="Full Name"
+                value="{{ old('name') }}">
+
+            @error('name')
+                <div class="error">{{ $message }}</div>
+            @enderror
+
+            {{-- PHONE --}}
+            <input type="text"
+                name="phone"
+                placeholder="Phone Number"
+                value="{{ old('phone') }}">
+
+            @error('phone')
+                <div class="error">{{ $message }}</div>
+            @enderror
+
+            {{-- EMAIL --}}
+            <input type="email"
+                name="email"
+                placeholder="Email Address"
+                value="{{ old('email') }}">
+
+            @error('email')
+                <div class="error">{{ $message }}</div>
+            @enderror
+
+            <button type="submit">
+                Book Now Pay Later
+            </button>
+
+        </form>
+
+    @else
+
+        {{-- EMPTY CART MESSAGE --}}
+        <div style="text-align:center; padding:20px 10px;">
+
+            <h3 style="
+                color:#6c35b3;
+                margin-bottom:10px;
+                font-size:20px;
+            ">
+                Your Cart is Empty
+            </h3>
+
+            <p style="
+                color:#666;
+                font-size:14px;
+                line-height:1.6;
+                margin-bottom:20px;
+            ">
+                Please add diagnostic tests to your cart
+                before booking an appointment.
+            </p>
+
+            <a href="{{ url('/') }}"
+               style="
+                    display:inline-block;
+                    padding:12px 20px;
+                    border-radius:8px;
+                    text-decoration:none;
+                    color:#fff;
+                    font-weight:600;
+                    background:linear-gradient(
+                        91deg,
+                        #f7941d 58.96%,
+                        rgba(255,173,75,.86) 98.25%
+                    );
+               ">
+                Browse Tests
+            </a>
+
+        </div>
+
+    @endif
+
 </div>
 
 

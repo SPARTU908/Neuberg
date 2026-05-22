@@ -4,7 +4,7 @@
 
     <div class="custom-grid">
 
-        <div class="custom-card search-item-box" data-title="MEN" data-type="custom"  data-category="men">
+        <div class="custom-card search-item-box" data-title="MEN" data-type="custom" data-category="men">
             <img src="{{ asset('assets/men.png') }}">
             <p>MEN</p>
         </div>
@@ -14,17 +14,17 @@
             <p>WOMEN</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="PREVENTIVE HEALTH" data-type="custom"  data-category="preventive health">
+        <div class="custom-card search-item-box" data-title="PREVENTIVE HEALTH" data-type="custom" data-category="preventive health">
             <img src="{{ asset('assets/women.png') }}">
             <p>PREVENTIVE HEALTH</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="SENIOR CITIZENS" data-type="custom"  data-category="senior citizens">
+        <div class="custom-card search-item-box" data-title="SENIOR CITIZENS" data-type="custom" data-category="senior citizens">
             <img src="{{ asset('assets/senior.png') }}">
             <p>SENIOR CITIZENS</p>
         </div>
 
-        <div class="custom-card search-item-box" data-title="ALLTESTS" data-type="custom"  data-category="all">
+        <div class="custom-card search-item-box" data-title="ALLTESTS" data-type="custom" data-category="all">
             <img src="{{ asset('assets/all_test.png') }}">
             <p>ALLTESTS</p>
         </div>
@@ -36,7 +36,7 @@
 <div class="book-now-wrapper">
     <img src="{{ asset('assets/book-now.jpeg') }}" class="book-now-img">
     <a href="{{ url('/appointment') }}" class="book-btn">
-        BOOK NOW
+        Book Now
     </a>
 </div>
 
@@ -319,31 +319,49 @@
     }
 
     .add-btn {
+        width: 108px;
+        height: 30px;
+
         border: 1px solid #7c3db6;
         background: #fff;
-        color: #7c3db6;
-        height: 34px;
-        width: 120px;
-        border-radius: 6px;
-        font-size: 18px;
+
+        border-radius: 4px;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 0 0 13px;
+
+        padding-left: 26px;
+
+        color: #7c3db6;
+        font-size: 14px;
+        font-weight: 500;
+
         cursor: pointer;
+
+        overflow: hidden;
     }
 
-    .add-btn span a {
-        width: 45px;
-        height: 34px;
+    .add-btn span {
+        width: 28px;
+        height: 30px;
+
         background: #6f2dad;
         color: #fff;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         font-size: 34px;
-        border-radius: 0 7px 4px 0;
-        text-decoration: none !important;
+        font-weight: 400;
+
+        line-height: 1;
+
+        border-radius: 0 3px 3px 0;
+
+        margin-right: -1px;
+        margin-top: 0;
     }
 
 
@@ -454,7 +472,7 @@
         }
 
         .modal-content {
-            padding: 20px;
+            padding: 20px 5px 20px 8px;
         }
 
         .modal-header {
@@ -502,10 +520,11 @@
         }
 
         .add-btn {
-            width: 88px;
-            font-size: 17px;
+            width: 92px;
+            font-size: 9px;
             height: 24px;
             /* padding-left: 20px; */
+            font-weight: 800;
         }
 
         .add-btn span {
@@ -559,8 +578,8 @@
 
         .book-btn {
             border-radius: 8px;
-            margin: -1px 2px -7px -5px;
-            padding: 2px 5px 2px 5px;
+            margin: 6px 2px 0px 139px;
+            padding: 0px 5px 3px 5px;
             font-size: 11px;
         }
     }
@@ -582,7 +601,7 @@
         "MEN": [{
                 name: "Prostate Specific Antigen",
                 price: "Starting from Rs.900"
-              
+
             },
             {
                 name: "SEMEN TEST",
@@ -903,9 +922,28 @@
                 <p class="test-price">${test.price}</p>
             </div>
 
-            <button class="add-btn">
-                Book <span><a href="{{ url('/appointment') }}">+</a></span>
-            </button>
+         <form class="cart-form"
+      action="{{ route('cart.add') }}"
+      method="POST">
+
+    <input type="hidden"
+           name="_token"
+           value="{{ csrf_token() }}">
+
+    <input type="hidden"
+           name="name"
+           value="${test.name}">
+
+    <input type="hidden"
+           name="price"
+           value="${test.price.replace('Starting from Rs.','').trim()}">
+
+    <button type="submit" class="add-btn">
+        Add 
+       <span>+</span>
+    </button>
+
+</form>
 
         </div>
     `;

@@ -45,7 +45,7 @@
 
 
         .logo {
-            height: 75px;
+            height: 80px;
             width: 170px;
         }
 
@@ -82,7 +82,7 @@
             background: #ddd;
         }
 
-        .icon {
+        .icons {
             display: flex;
             align-items: center;
             gap: 39px;
@@ -231,10 +231,6 @@
             height: 279px;
         }
 
-
-
-
-
         .hero-left img {
             width: 150px;
         }
@@ -308,6 +304,13 @@
             .logo {
                 width: 140px;
                 height: auto;
+            }
+
+            .icons {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                margin-right: 2px;
             }
 
             .icon {
@@ -472,7 +475,7 @@
                     </div>
                 </div>
             </div>
-            <div class="social-icons-1">
+            <!-- <div class="social-icons-1">
                 <a href="https://www.facebook.com/neuberg.varanasi" target="_blank">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
@@ -485,11 +488,32 @@
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
 
+</div> -->
 
+            <div class="icons">
 
+                <img src="{{ asset('assets/india.png') }}" class="icons-1">
+                <!-- <img src="{{ asset('assets/user.png') }}" class="icons-2"> -->
+
+                <a href="{{ route('admin.dashboard') }}">
+                    <img src="{{ asset('assets/user.png') }}" class="icons-2">
+                </a>
+                <a href="{{ route('cart.view') }}" class="cart-link">
+                    <div class="icon cart-icon-wrapper">
+
+                        <img src="{{ asset('assets/cart.png') }}" class="icons-3">
+
+                        <span class="cart-count">
+                            {{ count(session('cart', [])) }}
+                        </span>
+
+                    </div>
+
+                </a>
+                <!-- <img src="{{ asset('assets/cart.png') }}"> -->
             </div>
 
-            <div class="icon cart-icon-wrapper">
+            <!-- <div class="icon cart-icon-wrapper">
 
               <a href="{{ route('cart.view') }}" class="cart-link">
                     <div class="icon cart-icon-wrapper">
@@ -505,7 +529,7 @@
                 </a>
 
 
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -522,7 +546,7 @@
             Doctor's Profile
         </a>
 
-        <a href="/appointment">
+        <a href="/cart">
             <img src="{{ asset('assets/menu-book.png') }}" alt="">
             Book An Appointment
         </a>

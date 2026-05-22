@@ -10,6 +10,7 @@ class Booking extends Model
         'name',
         'phone',
         'email',
+        'test_name',
     ];
     
 }

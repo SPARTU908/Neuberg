@@ -123,7 +123,7 @@ $packages = [
                         {{ $package['description'] }}
                     </p>
 
-                    <div class="price-row">
+                    <!-- <div class="price-row">
 
                         <div>
                             <div class="new-price">
@@ -131,11 +131,65 @@ $packages = [
                             </div>
                         </div>
 
-                        <a href="{{ url('/appointment') }}" class="cart-btn">
-                            Book Now
-                        </a>
+                          <form class="cart-form"
+                            action="{{ route('cart.add') }}"
+                            method="POST">
 
-                    </div>
+                            @csrf
+
+                            <input type="hidden"
+                                name="name"
+                                value="{{ $package['title'] }}">
+
+                            <input type="hidden"
+                                name="price"
+                                value="{{ $package['new_price'] }}">
+
+                            <button type="submit" class="cart-btn">
+                                Add to Cart
+                            </button>
+
+                        </form>
+
+
+
+                    </div> -->
+
+                    <div class="price-row">
+
+    <div class="price-box">
+
+        <div class="old-price">
+            Rs. {{ $package['old_price'] }}
+        </div>
+
+        <div class="new-price">
+            Rs. {{ $package['new_price'] }}
+        </div>
+
+    </div>
+
+    <form class="cart-form"
+        action="{{ route('cart.add') }}"
+        method="POST">
+
+        @csrf
+
+        <input type="hidden"
+            name="name"
+            value="{{ $package['title'] }}">
+
+        <input type="hidden"
+            name="price"
+            value="{{ $package['new_price'] }}">
+
+        <button type="submit" class="cart-btn">
+            Add to Cart
+        </button>
+
+    </form>
+
+</div>
 
                     <img src="{{ asset($package['image']) }}" class="corner-icon1">
 
@@ -271,14 +325,30 @@ $packages = [
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 18px;
+        margin-top: 40px;
     }
 
-    .new-price {
-        font-size: 18px;
-        font-weight: 700;
-        color: #333;
-    }
+    .price-box{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.old-price{
+    font-size: 15px;
+    color: #8c8c8c;
+    text-decoration: line-through;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.new-price{
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+  
 
     .cart-btn {
         background: linear-gradient(90deg, #5a2d91, #9b63d1);
@@ -575,6 +645,13 @@ $packages = [
             width: 8px;
             border-radius: 50%;
         }
+        .old-price{
+    font-size: 13px;
+}
+
+.new-price{
+    font-size: 18px;
+}
     }
 </style>
 
@@ -620,4 +697,71 @@ $packages = [
             }
         }
     });
+</script>
+
+
+<script>
+document.addEventListener('submit', function(e) {
+
+    // ONLY CART FORM
+    if (!e.target.classList.contains('cart-form')) {
+        return;
+    }
+
+    e.preventDefault();
+
+    let form = e.target;
+
+    let formData = new FormData(form);
+
+    fetch(form.action, {
+
+        method: 'POST',
+
+        headers: {
+            'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+
+        body: formData
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        console.log(data);
+
+        // TOAST
+        let toast = document.getElementById('cartToast');
+
+        if(toast){
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+
+        }
+
+        // CART COUNT UPDATE
+        let cartCount = document.querySelector('.cart-count');
+
+        if(cartCount && data.cart_count !== undefined){
+
+            cartCount.innerText = data.cart_count;
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.log('Cart Error:', error);
+
+    });
+
+});
 </script>

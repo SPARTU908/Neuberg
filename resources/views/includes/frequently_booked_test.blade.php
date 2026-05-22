@@ -216,16 +216,19 @@ $tests = [
                     data-title="{{ strtolower($test['name']) }}"
                     data-type="test">
 
-                    <!-- <a href="{{ route('book.test', ['test' => $test['name']]) }}" class="plus-icon">+</a> -->
 
-                  <form class="cart-form" action="{{ route('cart.add') }}" method="POST">
-    @csrf
 
-    <input type="hidden" name="name" value="{{ $test['name'] }}">
-    <input type="hidden" name="price" value="{{ $test['price'] }}">
+                    <form class="cart-form" action="{{ route('cart.add') }}" method="POST">
+                        @csrf
 
-    <button type="submit" class="plus-icon">+</button>
-</form>
+                        <input type="hidden" name="name" value="{{ $test['name'] }}">
+                        <input type="hidden" name="price" value="{{ $test['price'] }}">
+
+                        <button type="submit" class="plus-icon">+</button>
+
+                        <!-- <button type="button" class="plus-icon add-to-cart-btn"> -->
+                       
+                    </form>
 
                     <h3>{{ $test['name'] }}</h3>
 
@@ -251,14 +254,14 @@ $tests = [
 
         </div>
 
-        <!-- Pagination -->
+   
         <div class="swiper-pagination"></div>
 
     </div>
 
     <div id="cartToast" class="cart-toast">
-    Item added to cart successfully
-</div>
+        Item added to cart successfully
+    </div>
 
 </div>
 
@@ -588,81 +591,36 @@ $tests = [
 
     /* TOAST MESSAGE */
 
-.cart-toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #6c35b3;
-    color: #fff;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    z-index: 99999;
+    .cart-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #6c35b3;
+        color: #fff;
+        padding: 14px 22px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 99999;
 
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
 
-    transition: all 0.35s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+        transition: all 0.35s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
 
-.cart-toast.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+    .cart-toast.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- <script>
-    new Swiper(".testSwiper", {
 
-        slidesPerView: 2.2,
-        slidesPerGroup: 2,
-        spaceBetween: 12,
-        loop: false,
-
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-
-        breakpoints: {
-
-            0: {
-                slidesPerView: 2.2,
-                slidesPerGroup: 2,
-                spaceBetween: 12,
-                grid: {
-                    rows: 1
-                }
-            },
-
-            576: {
-                slidesPerView: 2.2,
-                slidesPerGroup: 2,
-                spaceBetween: 14,
-                grid: {
-                    rows: 1
-                }
-            },
-
-            992: {
-                slidesPerView: 3,
-                slidesPerGroup: 6,
-                spaceBetween: 28,
-
-                grid: {
-                    rows: 2,
-                    fill: 'row'
-                }
-            }
-        }
-    });
-</script> -->
 
 
 <script>
@@ -718,58 +676,58 @@ $tests = [
 
     // AJAX ADD TO CART + TOAST
 
-  document.querySelectorAll('.cart-form').forEach(form => {
+    document.querySelectorAll('.cart-form').forEach(form => {
 
-    form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function(e) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        let formData = new FormData(this);
+            let formData = new FormData(this);
 
-        fetch(this.action, {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': this.querySelector('input[name="_token"]').value,
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: formData
-        })
+            fetch(this.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': this.querySelector('input[name="_token"]').value,
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: formData
+                })
 
-        .then(response => response.json())
+                .then(response => response.json())
 
-        .then(data => {
+                .then(data => {
 
-            console.log(data);
+                    console.log(data);
 
-            // TOAST
-            let toast = document.getElementById('cartToast');
+                    // TOAST
+                    let toast = document.getElementById('cartToast');
 
-            toast.classList.add('show');
+                    toast.classList.add('show');
 
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2500);
 
 
-            // CART COUNT UPDATE
-            let cartCount = document.querySelector('.cart-count');
+                    // CART COUNT UPDATE
+                    let cartCount = document.querySelector('.cart-count');
 
-            if(cartCount && data.cart_count !== undefined){
+                    if (cartCount && data.cart_count !== undefined) {
 
-                cartCount.innerText = data.cart_count;
+                        cartCount.innerText = data.cart_count;
 
-            }
+                    }
 
-        })
+                })
 
-        .catch(error => {
+                .catch(error => {
 
-            console.log('Cart Error:', error);
+                    console.log('Cart Error:', error);
+
+                });
 
         });
 
     });
-
-});
 </script>

@@ -36,12 +36,14 @@ class BookingController extends Controller
             'name'  => 'required',
             'phone' => 'required',
             'email' => 'required|email',
+            'test_name'=>'required'
         ]);
 
         $booking = Booking::create([
             'name'  => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
+            'test_name' => $request->test_name,
         ]);
 
         try {

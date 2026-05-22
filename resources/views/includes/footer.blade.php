@@ -3,17 +3,15 @@
         <div class="footer-left">
             <img src="{{ asset('assets/footer-logo.png') }}" class="footer-logo">
             <div class="social-icons">
-                <a href="#" target="_blank">
+                <a href="https://www.facebook.com/neuberg.varanasi" target="_blank">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
 
-              
-
-                <a href="#" target="_blank">
+              <a href="https://www.linkedin.com/company/neuberg-diagnostics-varanasi" target="_blank">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
 
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/neuberglab.varanasi/?hl=en" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
 
