@@ -189,7 +189,7 @@ $tests = [
 'name' => '25 OH Cholecalciferol (D2+D3)',
 'includes' => 'Includes 1 Test',
 'report' => '4 hours',
-'price' => 'xx'
+'price' => '1400'
 ],
 
 

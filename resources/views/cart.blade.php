@@ -331,7 +331,7 @@ PREMIUM CART DESIGN
                         </div>
 
                         <div class="cart-test-price">
-                            ₹{{ $item['price'] }}
+                            {{ $item['price'] }}
                         </div>
 
                     </div>
