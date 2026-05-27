@@ -6,47 +6,44 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
     <title>
         Admin Dashboard
     </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+        rel="stylesheet">
 
     <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+        href="https://fonts.googleapis.com">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+        rel="stylesheet">
 
     <style>
-
-        *{
+        * {
             font-family: 'Poppins', sans-serif;
         }
 
-        body{
+        body {
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #fff7ed 0%,
-                    #f9f5ff 100%
-                );
+                    #f9f5ff 100%);
 
             min-height: 100vh;
         }
 
-        .dashboard-wrapper{
+        .dashboard-wrapper {
 
             padding: 50px 0;
         }
 
         /* HEADER */
 
-        .dashboard-header{
+        .dashboard-header {
 
             background: #fff;
 
@@ -55,19 +52,19 @@
             padding: 24px 30px;
 
             box-shadow:
-                0 10px 30px rgba(0,0,0,0.06);
+                0 10px 30px rgba(0, 0, 0, 0.06);
 
             margin-bottom: 28px;
 
             border: 1px solid #f1e4ff;
         }
 
-        .brand-logo img{
+        .brand-logo img {
 
             width: 180px;
         }
 
-        .dashboard-title{
+        .dashboard-title {
 
             font-size: 34px;
             font-weight: 700;
@@ -77,7 +74,7 @@
             margin-top: 18px;
         }
 
-        .dashboard-subtitle{
+        .dashboard-subtitle {
 
             color: #777;
 
@@ -88,7 +85,7 @@
 
         /* LOGOUT */
 
-        .logout-btn{
+        .logout-btn {
 
             border: none;
 
@@ -97,11 +94,9 @@
             border-radius: 12px;
 
             background:
-                linear-gradient(
-                    90deg,
+                linear-gradient(90deg,
                     #ef4444,
-                    #f87171
-                );
+                    #f87171);
 
             color: white;
 
@@ -110,17 +105,17 @@
             transition: 0.3s ease;
         }
 
-        .logout-btn:hover{
+        .logout-btn:hover {
 
             transform: translateY(-1px);
 
             box-shadow:
-                0 10px 20px rgba(239,68,68,0.25);
+                0 10px 20px rgba(239, 68, 68, 0.25);
         }
 
         /* CARD */
 
-        .dashboard-card{
+        .dashboard-card {
 
             background: white;
 
@@ -129,33 +124,28 @@
             padding: 25px;
 
             box-shadow:
-                0 10px 30px rgba(0,0,0,0.06);
+                0 10px 30px rgba(0, 0, 0, 0.06);
 
             border: 1px solid #f1e4ff;
         }
 
         /* TABLE */
 
-        .table{
+        .table {
 
             margin-bottom: 0;
         }
 
-        .table thead{
+        .table thead {
 
             position: sticky;
             top: 0;
             z-index: 10;
         }
 
-        .table thead th{
+        .table thead th {
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #4c1d95,
-                    #6d28d9
-                ) !important;
+            background: #4c1d95;
 
             color: white;
 
@@ -169,17 +159,17 @@
             vertical-align: middle;
         }
 
-        .table tbody tr{
+        .table tbody tr {
 
             transition: 0.25s ease;
         }
 
-        .table tbody tr:hover{
+        .table tbody tr:hover {
 
             background: #faf5ff;
         }
 
-        .table tbody td{
+        .table tbody td {
 
             padding: 16px;
 
@@ -192,7 +182,7 @@
             border-color: #f1f1f1;
         }
 
-        .serial-badge{
+        .serial-badge {
 
             width: 34px;
             height: 34px;
@@ -211,7 +201,7 @@
             font-weight: 700;
         }
 
-        .test-badge{
+        .test-badge {
 
             display: inline-block;
 
@@ -229,7 +219,7 @@
             line-height: 1.5;
         }
 
-        .date-text{
+        .date-text {
 
             white-space: nowrap;
 
@@ -238,12 +228,12 @@
 
         /* PAGINATION */
 
-        .pagination{
+        .pagination {
 
             margin-top: 25px;
         }
 
-        .page-link{
+        .page-link {
 
             border-radius: 10px !important;
 
@@ -256,7 +246,7 @@
             font-weight: 600;
         }
 
-        .page-item.active .page-link{
+        .page-item.active .page-link {
 
             background: #6d28d9;
 
@@ -265,14 +255,14 @@
 
         /* EMPTY */
 
-        .empty-data{
+        .empty-data {
 
             text-align: center;
 
             padding: 60px 20px;
         }
 
-        .empty-data img{
+        .empty-data img {
 
             width: 120px;
 
@@ -281,7 +271,7 @@
             margin-bottom: 18px;
         }
 
-        .empty-data h4{
+        .empty-data h4 {
 
             font-size: 22px;
 
@@ -290,259 +280,258 @@
             margin-bottom: 10px;
         }
 
-        .empty-data p{
+        .empty-data p {
 
             color: #888;
         }
 
         /* MOBILE */
 
-        @media(max-width:768px){
+        @media(max-width:768px) {
 
-            .dashboard-title{
+            .dashboard-title {
 
                 font-size: 26px;
             }
 
-            .dashboard-header{
+            .dashboard-header {
 
                 padding: 20px;
             }
 
-            .dashboard-card{
+            .dashboard-card {
 
                 padding: 16px;
             }
 
             .table thead th,
-            .table tbody td{
+            .table tbody td {
 
                 white-space: nowrap;
             }
 
-            .logout-btn{
+            .logout-btn {
 
                 padding: 10px 16px;
 
                 font-size: 14px;
             }
 
-            .brand-logo img{
+            .brand-logo img {
 
                 width: 140px;
             }
         }
-
     </style>
 
 </head>
 
 <body>
 
-<div class="container dashboard-wrapper">
+    <div class="container dashboard-wrapper">
 
-    <!-- HEADER -->
+        <!-- HEADER -->
 
-    <div class="dashboard-header">
+        <div class="dashboard-header">
 
-        <div class="d-flex
+            <div class="d-flex
                     justify-content-between
                     align-items-start
                     flex-wrap
                     gap-3">
 
-            <div>
+                <div>
 
-                <!-- LOGO -->
+                    <!-- LOGO -->
 
-                <div class="brand-logo">
+                    <div class="brand-logo">
 
-                    <img src="{{ asset('assets/logo.png') }}"
-                         alt="Neuberg Logo">
+                        <img src="{{ asset('assets/logo.png') }}"
+                            alt="Neuberg Logo">
+
+                    </div>
+
+                    <!-- TITLE -->
+
+                    <div class="dashboard-title">
+
+                        Admin Dashboard
+
+                    </div>
+
+                    <div class="dashboard-subtitle">
+
+                        View and manage all appointment bookings
+
+                    </div>
 
                 </div>
 
-                <!-- TITLE -->
+                <!-- LOGOUT -->
 
-                <div class="dashboard-title">
+                <form method="POST"
+                    action="{{ route('logout') }}">
 
-                    Admin Dashboard
+                    @csrf
 
-                </div>
+                    <button class="logout-btn">
 
-                <div class="dashboard-subtitle">
+                        Logout
 
-                    View and manage all appointment bookings
+                    </button>
 
-                </div>
+                </form>
 
             </div>
 
-            <!-- LOGOUT -->
+        </div>
 
-            <form method="POST"
-                  action="{{ route('logout') }}">
+        <!-- TABLE CARD -->
 
-                @csrf
+        <div class="dashboard-card">
 
-                <button class="logout-btn">
+            @if($bookings->count() > 0)
 
-                    Logout
+            <div class="table-responsive">
 
-                </button>
+                <table class="table align-middle">
 
-            </form>
+                    <thead>
+
+                        <tr>
+
+                            <th>Sr. No.</th>
+
+                            <th>Name</th>
+
+                            <th>Phone</th>
+
+                            <th>Email</th>
+
+                            <th>Selected Tests</th>
+
+                            <th>Booking Date</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($bookings as $index => $booking)
+
+                        <tr>
+
+                            <!-- SERIAL NUMBER -->
+
+                            <td>
+
+                                <div class="serial-badge">
+
+                                    {{ $bookings->firstItem() + $index }}
+
+                                </div>
+
+                            </td>
+
+                            <!-- NAME -->
+
+                            <td>
+
+                                <strong>
+
+                                    {{ $booking->name }}
+
+                                </strong>
+
+                            </td>
+
+                            <!-- PHONE -->
+
+                            <td>
+
+                                {{ $booking->phone }}
+
+                            </td>
+
+                            <!-- EMAIL -->
+
+                            <td>
+
+                                {{ $booking->email }}
+
+                            </td>
+
+                            <!-- TEST -->
+
+                            <td>
+
+                                <span class="test-badge">
+
+                                    {{ $booking->test_name }}
+
+                                </span>
+
+                            </td>
+
+                            <!-- DATE -->
+
+                            <td>
+
+                                <span class="date-text">
+
+                                    {{ $booking->created_at->format('d M Y h:i A') }}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- PAGINATION -->
+
+            <div>
+
+                {{ $bookings->links() }}
+
+            </div>
+
+            @else
+
+            <!-- EMPTY STATE -->
+
+            <div class="empty-data">
+
+                <img src="{{ asset('assets/empty-data.png') }}"
+                    alt="No Data">
+
+                <h4>
+
+                    No Bookings Found
+
+                </h4>
+
+                <p>
+
+                    User appointments will appear here.
+
+                </p>
+
+            </div>
+
+            @endif
 
         </div>
 
     </div>
-
-    <!-- TABLE CARD -->
-
-    <div class="dashboard-card">
-
-        @if($bookings->count() > 0)
-
-        <div class="table-responsive">
-
-            <table class="table align-middle">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Sr. No.</th>
-
-                        <th>Name</th>
-
-                        <th>Phone</th>
-
-                        <th>Email</th>
-
-                        <th>Selected Tests</th>
-
-                        <th>Booking Date</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    @foreach($bookings as $index => $booking)
-
-                    <tr>
-
-                        <!-- SERIAL NUMBER -->
-
-                        <td>
-
-                            <div class="serial-badge">
-
-                                {{ $bookings->firstItem() + $index }}
-
-                            </div>
-
-                        </td>
-
-                        <!-- NAME -->
-
-                        <td>
-
-                            <strong>
-
-                                {{ $booking->name }}
-
-                            </strong>
-
-                        </td>
-
-                        <!-- PHONE -->
-
-                        <td>
-
-                            {{ $booking->phone }}
-
-                        </td>
-
-                        <!-- EMAIL -->
-
-                        <td>
-
-                            {{ $booking->email }}
-
-                        </td>
-
-                        <!-- TEST -->
-
-                        <td>
-
-                            <span class="test-badge">
-
-                                {{ $booking->test_name }}
-
-                            </span>
-
-                        </td>
-
-                        <!-- DATE -->
-
-                        <td>
-
-                            <span class="date-text">
-
-                                {{ $booking->created_at->format('d M Y h:i A') }}
-
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-                    @endforeach
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- PAGINATION -->
-
-        <div>
-
-            {{ $bookings->links() }}
-
-        </div>
-
-        @else
-
-        <!-- EMPTY STATE -->
-
-        <div class="empty-data">
-
-            <img src="{{ asset('assets/empty-data.png') }}"
-                 alt="No Data">
-
-            <h4>
-
-                No Bookings Found
-
-            </h4>
-
-            <p>
-
-                User appointments will appear here.
-
-            </p>
-
-        </div>
-
-        @endif
-
-    </div>
-
-</div>
 
 </body>
 

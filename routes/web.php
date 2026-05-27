@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
@@ -98,3 +99,10 @@ Route::middleware(['auth'])->group(function () {
 */
 
 require __DIR__.'/auth.php';
+
+
+
+ Route::get('/optimize', function() {
+    $exitCode = Artisan::call('optimize');
+    return 'Application optimize ';
+    });

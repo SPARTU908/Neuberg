@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Log;
 use App\Mail\UserBookingMail;
 use App\Mail\AdminBookingMail;
 use App\Models\Booking;
+
 
 class CartController extends Controller
 {
@@ -26,6 +30,7 @@ class CartController extends Controller
         return response()->json([
             'success' => true,
             'cart_count' => count($cart)
+            
         ]);
     }
 
@@ -109,7 +114,7 @@ class CartController extends Controller
     // }
 
 
-    public function submit(Request $request)
+public function submit(Request $request)
 {
     $request->validate([
         'name'  => 'required',
@@ -117,20 +122,17 @@ class CartController extends Controller
         'email' => 'required|email',
     ]);
 
-    // GET CART
     $cart = Session::get('cart', []);
 
-    // CHECK EMPTY CART
     if(count($cart) == 0){
         return back()->with('error', 'Cart is empty');
     }
 
-    // TEST NAMES
     $testNames = collect($cart)
                     ->pluck('name')
                     ->implode(', ');
 
-    // SAVE TO DATABASE
+    // SAVE DATABASE
     $booking = Booking::create([
         'name'      => $request->name,
         'phone'     => $request->phone,
@@ -138,13 +140,20 @@ class CartController extends Controller
         'test_name' => $testNames,
     ]);
 
-    // SEND MAIL TO ADMIN
-    Mail::to(env('ADMIN_EMAIL'))
-        ->send(new AdminBookingMail($booking));
+    // MAIL TRY CATCH
+    try {
 
-    // SEND MAIL TO USER
-    Mail::to($request->email)
-        ->send(new UserBookingMail($booking));
+        Mail::to(env('ADMIN_EMAIL'))
+            ->send(new AdminBookingMail($booking));
+
+        Mail::to($request->email)
+            ->send(new UserBookingMail($booking));
+
+    } catch (\Exception $e) {
+
+        Log::error($e->getMessage());
+
+    }
 
     // CLEAR CART
     Session::forget('cart');
@@ -153,6 +162,9 @@ class CartController extends Controller
         ->route('cart.view')
         ->with('success', 'Booking submitted successfully!');
 }
+
+
+
 
 public function removeSingle(Request $request)
 {

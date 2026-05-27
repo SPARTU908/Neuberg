@@ -130,7 +130,7 @@ $tests = [
 'name' => 'Urine Examination',
 'includes' => 'Includes 24 Test',
 'report' => '6 hours',
-'price' => 'xx'
+'price' => '100'
 ],
 
 
@@ -674,60 +674,8 @@ $tests = [
     });
 
 
-    // AJAX ADD TO CART + TOAST
-
-    document.querySelectorAll('.cart-form').forEach(form => {
-
-        form.addEventListener('submit', function(e) {
-
-            e.preventDefault();
-
-            let formData = new FormData(this);
-
-            fetch(this.action, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': this.querySelector('input[name="_token"]').value,
-                        'Accept': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: formData
-                })
-
-                .then(response => response.json())
-
-                .then(data => {
-
-                    console.log(data);
-
-                    // TOAST
-                    let toast = document.getElementById('cartToast');
-
-                    toast.classList.add('show');
-
-                    setTimeout(() => {
-                        toast.classList.remove('show');
-                    }, 2500);
+   
 
 
-                    // CART COUNT UPDATE
-                    let cartCount = document.querySelector('.cart-count');
-
-                    if (cartCount && data.cart_count !== undefined) {
-
-                        cartCount.innerText = data.cart_count;
-
-                    }
-
-                })
-
-                .catch(error => {
-
-                    console.log('Cart Error:', error);
-
-                });
-
-        });
-
-    });
+    
 </script>
